@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6" method="new">
+	<name>Painter</name>
+	<creationDate>2012-02-07</creationDate>
+	<author>Alonzo C. Turner</author>
+	<authorUrl>http://www.subtextproductions.com</authorUrl>
+	<authorEmail>alonzo.turner@subtextproductions.com</authorEmail>
+	<copyright>COM_PAINTER_COMPONENT_COPYRIGHT</copyright>
+	<license>COM_PAINTER_COMPONENT_LICENSE</license>
+	<version>0.0.1a</version>
+	<description>COM_PAINTER_COMPONENT_DESCRIPTION</description>
+	<scriptfile>install.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysqli" charset="utf8">sql/install.mysqli.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysqli" charset="utf8">sql/install.mysqli.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysqli">sql/updates/mysqli</schemapath>
+		</schemas>
+	</update>
+	<files folder="site">
+	</files>
+	<administration>
+		<menu>COM_WHOLESALE_MENU_ROOT_NAME</menu>
+		<submenu>
+			<menu>COM_WHOLESALE_SUBMENU_PREFS</menu>
+		</submenu>
+		<languages folder="admin/language">
+			<language tag="en-US">en-US/en-US.com_painter.ini</language>
+			<language tag="en-US">en-US/en-US.com_painter.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_painter.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_painter.sys.ini</language>
+		</languages>
+		<files folder="admin">
+		</files>
+	</administration>
+</extension>
