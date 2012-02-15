@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fields name="params">
+		<fieldset name="params" label="COM_PAINTER_OPTIONS_FIELDSET_LEGEND">
+			<field name="default_itemid" type="menuitem" label="COM_PAINTER_DEFAULT_ITEMID_LABEL" description="COM_PAINTER_DEFAULT_ITEMID_DESC" />
+		</fieldset>
+		<fieldset name="permisions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
+			<field name="rules" type="rules" label="JCONFIG_PERMISSIONS_LABEL" class="inputbox" validate="rules" filter="rules" component="com_painter" section="component" />
+		</fieldset>
+	</fields>
+</config>
