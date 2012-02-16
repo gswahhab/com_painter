@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<form>
+	<fields name="base">
+		<fieldset name="base" label="COM_PAINTER_COUNTRY_BASIC_LEGEND">
+			<field name="country_id" type="hidden" filter="unset" label="COM_PAINTER_COUNTRY_ID_LABEL" description="COM_PAINTER_COUNTRY_ID_DESC" />
+			<field name="country_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_COUNTRY_NAME_LABEL" description="COM_PAINTER_COUNTRY_NAME_DESC" />
+			<field name="country_code" type="text" class="inputbox" size="4" label="COM_PAINTER_COUNTRY_CODE_LABEL" description="COM_PAINTER_COUNTRY_CODE_DESC" />
+		</fieldset>
+	</fields>
+	<fields name="options">
+		<fieldset name="options" label="COM_PAINTER_COUNTRY_OPTIONS_LEGEND">
+			<field name="published" type="radio" default="0" label="COM_PAINTER_PUBLISHED_LABEL" description="COM_PAINTER_COUNTRY_PUBLISHED_DESC">
+				<option value="0">COM_PAINTER_BOOLEAN_FALSE</option>
+				<option value="1">COM_PAINTER_BOOLEAN_TRUE</option>
+			</field>
+			<field name="access" type="accesslevel" label="COM_PAINTER_ACCESS_LABEL" description="COM_PAINTER_COUNTRY_ACCESS_DESC" />
+		</fieldset>
+	</fields>
+</form>

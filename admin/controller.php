@@ -44,6 +44,7 @@ class PainterController extends JController
 		$viewName = JRequest::getCmd('view', $this->default_view);
 		switch($viewLayout){
 		case "list":
+			PainterHelper::addSubmenu();
 			$modelName = $viewName;
 			break;
 		case "edit":

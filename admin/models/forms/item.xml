@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<form>
+	<fields name="base">
+		<fieldset name="base" label="COM_PAINTER_ITEM_BASIC_LEGEND">
+			<field name="item_id" type="hidden" />
+			<field name="item_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_ITEM_NAME_LABEL" description="COM_PAINTER_ITEM_NAME_DESC" />
+			<field name="item_desc" type="text" class="inputbox" size="32" label="COM_PAINTER_ITEM_DESC_LABEL" description="COM_PAINTER_ITEM_DESC_DESC" />
+			<field name="item_qty" type="text" class="inputbox" size="8" label="COM_PAINTER_ITEM_QTY_LABEL" description="COM_PAINTER_ITEM_QTY_DESC" />
+			<field name="item_uom" type="text" class="inputbox" size="8" label="COM_PAINTER_ITEM_UOM_LABEL" description="COM_PAINTER_ITEM_UOM_DESC" />
+			<field name="item_rate" type="text" class="inputbox" size="8" label="COM_PAINTER_ITEM_RATE_LABEL" description="COM_PAINTER_ITEM_RATE_DESC" />
+			<field name="item_type" type="text" class="inputbox" size="8" label="COM_PAINTER_ITEM_TYPE_LABEL" description="COM_PAINTER_ITEM_TYPE_DESC" />
+		</fieldset>
+	</fields>
+	<fields name="options">
+		<fieldset name="options" label="COM_PAINTER_ITEM_OPTIONS_LEGEND">
+			<field name="published" type="radio" default="0" label="COM_PAINTER_PUBLISHED_LABEL" description="COM_PAINTER_ITEM_PUBLISHED_DESC">
+				<option value="0">COM_PAINTER_BOOLEAN_FALSE</option>
+				<option value="1">COM_PAINTER_BOOLEAN_TRUE</option>
+			</field>
+			<field name="access" type="accesslevel" label="COM_PAINTER_ACCESS_LABEL" description="COM_PAINTER_ITEM_ACCESS_DESC" />
+		</fieldset>
+	</fields>
+</form>

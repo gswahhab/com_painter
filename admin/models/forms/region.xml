@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<form>
+	<fields name="base">
+		<fieldset name="base" label="COM_PAINTER_REGION_BASIC_LEGEND">
+			<field name="region_id" type="hidden" filter="unset" label="COM_PAINTER_REGION_ID_LABEL" description="COM_PAINTER_REGION_ID_DESC" />
+			<field name="region_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_REGION_NAME_LABEL" description="COM_PAINTER_REGION_NAME_DESC" />
+			<field name="region_code" type="text" class="inputbox" size="4" label="COM_PAINTER_REGION_NUMBER_LABEL" description="COM_PAINTER_REGION_NUMBER_DESC" />
+			<field name="region_tax" type="text" class="inputbox validate-numeric" size="4" label="COM_PAINTER_REGION_TAX_LABEL" description="COM_PAINTER_REGION_TAX_DESC" />
+		</fieldset>
+	</fields>
+	<fields name="options">
+		<fieldset name="options" label="COM_PAINTER_REGION_OPTIONS_LEGEND">
+			<field name="published" type="radio" default="0" label="COM_PAINTER_PUBLISHED_LABEL" description="COM_PAINTER_REGION_PUBLISHED_DESC">
+				<option value="0">COM_PAINTER_BOOLEAN_FALSE</option>
+				<option value="1">COM_PAINTER_BOOLEAN_TRUE</option>
+			</field>
+			<field name="access" type="accesslevel" label="COM_PAINTER_ACCESS_LABEL" description="COM_PAINTER_REGION_ACCESS_DESC" />
+		</fieldset>
+	</fields>
+</form>

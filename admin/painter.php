@@ -15,7 +15,7 @@ if(!JFactory::getUser()->authorise('core.manage', 'com_wholesale')){
 }
 
 // REQUIRE HELPER FILE
-//JLoader::register('PainterHelper', dirname(__FILE__).DS.'helpers'.DS.'painter.php');
+JLoader::register('PainterHelper', dirname(__FILE__).DS.'helpers'.DS.'painter.php');
 
 // IMPORT CONTROLLER LIBRARY
 jimport('joomla.application.component.controller');

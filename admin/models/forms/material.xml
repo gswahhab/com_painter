@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<form>
+	<fields name="base">
+		<fieldset name="base" label="COM_PAINTER_MATERIAL_BASIC_LEGEND">
+			<field name="material_id" type="hidden" />
+			<field name="material_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_MATERIAL_NAME_LABEL" description="COM_PAINTER_MATERIAL_NAME_DESC" />
+			<field name="material_number" type="text" class="inputbox" size="32" label="COM_PAINTER_MATERIAL_NUMBER_LABEL" description="COM_PAINTER_MATERIAL_NUMBER_DESC" />
+			<field name="material_desc" type="textarea" class="inputbox" label="COM_PAINTER_MATERIAL_DESC_LABEL" description="COM_PAINTER_MATERIAL_DESC_DESC" />
+		</fieldset>
+	</fields>
+	<fields name="options">
+		<fieldset name="options" label="COM_PAINTER_MATERIAL_OPTIONS_LEGEND">
+			<field name="published" type="radio" default="0" label="COM_PAINTER_PUBLISHED_LABEL" description="COM_PAINTER_MATERIAL_PUBLISHED_DESC">
+				<option value="0">COM_PAINTER_BOOLEAN_FALSE</option>
+				<option value="1">COM_PAINTER_BOOLEAN_TRUE</option>
+			</field>
+			<field name="access" type="accesslevel" label="COM_PAINTER_ACCESS_LABEL" description="COM_PAINTER_MATERIAL_ACCESS_DESC" />
+		</fieldset>
+	</fields>
+</form>

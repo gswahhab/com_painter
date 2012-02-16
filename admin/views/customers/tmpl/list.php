@@ -55,7 +55,7 @@
 			$row		= $this->items[$i];
 			$access		= JHTML::_('grid.access', $row, $i);
 			$checked	= JHTML::_('grid.id', $i, $row->customer_id );
-			$link		= JRoute::_('index.php?option=com_customer&task=customer.edit&customer_id='. $row->customer_id.'&'.JUtility::getToken().'=1');
+			$link		= JRoute::_('index.php?option=com_painter&task=customer.edit&customer_id='. $row->customer_id.'&'.JUtility::getToken().'=1');
 			if($row->published){
 				$publish_img = "publish_g.png";
 				$publish_alt = "Published";

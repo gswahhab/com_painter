@@ -4,7 +4,6 @@
  * 
  * @package		Painter
  * @subpackage	Components
- * @license		GNU/GPL
  */
 
 // NO DIRECT ACCESS
@@ -34,7 +33,6 @@ class PainterViewCustomers extends JView
 		$this->setLayout($layout);
 		switch($layout){
 		case "edit":
-			$layout = $this->setLayout('edit');
 			JToolBarHelper::title(JText::_('COM_PAINTER_EDIT_CUSTOMER_SETTINGS'), 'generic.png');
 			JToolBarHelper::save('customer.save');
 			JToolBarHelper::apply('customer.apply');

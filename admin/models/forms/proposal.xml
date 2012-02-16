@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<form>
+	<fields name="base">
+		<fieldset name="base" label="COM_PAINTER_PROPOSAL_BASIC_LEGEND">
+			<field name="proposal_id" type="hidden" />
+			<field name="client_id" type="hidden" />
+			<field name="customer_id" type="hidden" />
+			<field name="proposal_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_PROPOSAL_NAME_LABEL" description="COM_PAINTER_PROPOSAL_NAME_DESC" />
+			<field name="proposal_number" type="text" class="inputbox" size="32" label="COM_PAINTER_PROPOSAL_NUMBER_LABEL" description="COM_PAINTER_PROPOSAL_NUMBER_DESC" />
+			<field name="proposal_subtotal" type="text" class="inputbox" diabled="true" filter="unset" label="COM_PAINTER_PROPOSAL_SUBTOTAL_LABEL" description="COM_PAINTER_PROPOSAL_SUBTOTAL_DESC" />
+			<field name="proposal_total" type="text" class="inputbox" diabled="true" filter="unset" label="COM_PAINTER_PROPOSAL_TOTAL_LABEL" description="COM_PAINTER_PROPOSAL_TOTAL_DESC" />
+			<field name="proposal_notes" type="textarea" class="inputbox" label="COM_PAINTER_PROPOSAL_NOTES_LABEL" description="COM_PAINTER_PROPOSAL_NOTES_DESC" />
+			<field name="proposal_misc" type="textarea" class="inputbox" label="COM_PAINTER_PROPOSAL_MISC_LABEL" description="COM_PAINTER_PROPOSAL_MISC_DESC" />
+		</fieldset>
+	</fields>
+	<fields name="options">
+		<fieldset name="options" label="COM_PAINTER_PROPOSAL_OPTIONS_LEGEND">
+			<field name="published" type="radio" default="0" label="COM_PAINTER_PUBLISHED_LABEL" description="COM_PAINTER_PROPOSAL_PUBLISHED_DESC">
+				<option value="0">COM_PAINTER_BOOLEAN_FALSE</option>
+				<option value="1">COM_PAINTER_BOOLEAN_TRUE</option>
+			</field>
+			<field name="access" type="accesslevel" label="COM_PAINTER_ACCESS_LABEL" description="COM_PAINTER_PROPOSAL_ACCESS_DESC" />
+		</fieldset>
+	</fields>
+</form>

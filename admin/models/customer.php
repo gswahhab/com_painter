@@ -27,8 +27,7 @@ class PainterModelCustomer extends JModelAdmin
 	/**
 	 * Method to get an instance of the default Form.
 	 *
-	 * @return  JDatabaseQuery   A JDatabaseQuery object to retrieve the data set.
-	 *
+	 * @return  JForm   A JForm object to retrieve the data set.
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{

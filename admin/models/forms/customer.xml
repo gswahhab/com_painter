@@ -2,7 +2,7 @@
 <form>
 	<fields name="base">
 		<fieldset name="base" label="COM_PAINTER_CUSTOMER_BASIC_LEGEND">
-			<field name="customer_id" type="hidden" filter="unset" label="COM_PAINTER_CUSTOMER_ID_LABEL" description="COM_PAINTER_CUSTOMER_ID_DESC" />
+			<field name="customer_id" type="hidden" />
 			<field name="customer_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_CUSTOMER_NAME_LABEL" description="COM_PAINTER_CUSTOMER_NAME_DESC" />
 			<field name="customer_number" type="text" class="inputbox" size="32" label="COM_PAINTER_CUSTOMER_NUMBER_LABEL" description="COM_PAINTER_CUSTOMER_NUMBER_DESC" />
 			<field name="customer_logo" type="text" class="inputbox" size="32" label="COM_PAINTER_CUSTOMER_LOGO_LABEL" description="COM_PAINTER_CUSTOMER_LOGO_DESC" />
