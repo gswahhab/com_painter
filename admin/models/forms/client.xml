@@ -2,12 +2,13 @@
 <form>
 	<fields name="base">
 		<fieldset name="base" label="COM_PAINTER_CLIENT_BASIC_LEGEND">
-			<field name="customer_id" type="hidden" />
 			<field name="client_id" type="hidden" />
+			<field name="customer_id" type="sql" key_field="customer_id" value_field="customer_name" query="SELECT `customer_id`, `customer_name` FROM `#__painter_customers` WHERE `published` = 1 ORDER BY `customer_name`" required="true" label="COM_PAINTER_CUSTOMER_ID_LABEL" description="COM_PAINTER_CUSTOMER_ID_DESC" />
 			<field name="client_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_CLIENT_NAME_LABEL" description="COM_PAINTER_CLIENT_NAME_DESC" />
 			<field name="client_number" type="text" class="inputbox" size="32" label="COM_PAINTER_CLIENT_NUMBER_LABEL" description="COM_PAINTER_CLIENT_NUMBER_DESC" />
-			<field name="client_contact" type="text" class="inputbox" size="32" label="COM_PAINTER_CLIENT_CONTACT_LABEL" description="COM_PAINTER_CLIENT_CONTACT_DESC" />
-			<field name="client_email" type="text" class="inputbox validate-email" size="32" required="true" label="COM_PAINTER_CLIENT_EMAIL_LABEL" description="COM_PAINTER_CLIENT_EMAIL_DESC" />
+			<field name="client_contact" type="text" class="inputbox" size="64" required="true" label="COM_PAINTER_CLIENT_CONTACT_LABEL" description="COM_PAINTER_CLIENT_CONTACT_DESC" />
+			<field name="client_phone" type="text" class="inputbox validate-phone" size="64" required="true" label="COM_PAINTER_CLIENT_PHONE_LABEL" description="COM_PAINTER_CLIENT_PHONE_DESC" />
+			<field name="client_email" type="text" class="inputbox validate-email" size="64" required="true" label="COM_PAINTER_CLIENT_EMAIL_LABEL" description="COM_PAINTER_CLIENT_EMAIL_DESC" />
 		</fieldset>
 	</fields>
 	<fields name="options">

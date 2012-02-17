@@ -26,6 +26,7 @@ CREATE TABLE `#__painter_clients` (
 	`client_name` VARCHAR(128) DEFAULT NULL,
 	`client_number` VARCHAR(16) DEFAULT NULL,
 	`client_contact` VARCHAR(128) DEFAULT NULL,
+	`client_phone` VARCHAR(16) DEFAULT NULL,
 	`client_email` VARCHAR(128) DEFAULT NULL,
 	`ordering` INT(11) UNSIGNED DEFAULT NULL,
 	`published` TINYINT(1) UNSIGNED DEFAULT 0,
