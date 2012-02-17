@@ -20,7 +20,20 @@ class PainterModelCustomers extends JModelList
 	 * @param   array  $config  An optional associative array of configuration settings.
 	 */
 	public function __construct($config = array()){
+		if(empty($config['filter_fields'])){
+			$config['filter_fields'] = array('customer_name', 'published', 'c.published', 'ordering', 'c.ordering', 'c.access');
+		}
 		parent::__construct($config);
+	}
+	/**
+	 * Method to auto-populate the model state.
+	 *
+	 * Note. Calling getState in this method will result in recursion.
+	 */
+	protected function populateState($ordering = null, $direction = null)
+	{
+		// List state information.
+		parent::populateState('c.ordering', 'asc');
 	}
 	/**
 	 * Method to get a JDatabaseQuery object for retrieving the data set from a database.
@@ -37,6 +50,11 @@ class PainterModelCustomers extends JModelList
 		$query->select("c.*, v.title AS `access`");
 		$query->from($table->getTableName()." AS c");
 		$query->leftJoin("#__viewlevels v ON c.access = v.id");
+		
+		// ADD THE ORDERING CLAUSE
+		$ordering = $this->state->get('list.ordering');
+		$order_dir = $this->state->get('list.direction');
+		$query->order($db->escape($ordering.' '.$order_dir));
 		
 		return $query;
 	}

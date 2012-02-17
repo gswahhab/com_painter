@@ -43,7 +43,7 @@ class PainterViewItems extends JView
 			JToolBarHelper::title(JText::_('COM_PAINTER_MANAGE_ITEMS'), 'generic.png');
 			JToolBarHelper::addNewX('item.add');
 			JToolBarHelper::editListX('item.edit');
-			JToolBarHelper::deleteList('item.remove');
+			JToolBarHelper::deleteList('COM_PAINTER_ITEM_DELETE_WARNING_MSG', 'items.delete');
 			// GET DATA FROM THE MODEL
 			$this->filter	= $this->get('State');
 			$this->items	= $this->get('Items');

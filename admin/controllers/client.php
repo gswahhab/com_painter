@@ -11,7 +11,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport('joomla.application.component.controllerform');
 
-class PainterControllerCustomer extends JControllerForm
+class PainterControllerClient extends JControllerForm
 {
 	/**
 	 * constructor (registers additional tasks to methods)

@@ -43,7 +43,7 @@ class PainterViewCustomers extends JView
 			JToolBarHelper::title(JText::_('COM_PAINTER_MANAGE_CUSTOMERS'), 'generic.png');
 			JToolBarHelper::addNewX('customer.add');
 			JToolBarHelper::editListX('customer.edit');
-			JToolBarHelper::deleteList('customer.remove');
+			JToolBarHelper::deleteList('COM_PAINTER_CUSTOMER_DELETE_WARNING_MSG', 'customers.delete');
 			// GET DATA FROM THE MODEL
 			$this->filter	= $this->get('State');
 			$this->items	= $this->get('Items');

@@ -43,11 +43,11 @@
 			<menu controller="materials" view="materials">COM_PAINTER_SUBMENU_MATERIALS</menu>
 			<menu controller="services" view="services">COM_PAINTER_SUBMENU_SERVICES</menu>
 		</submenu>
-		<languages folder="admin/language">
-			<language tag="en-US">en-US/en-US.com_painter.ini</language>
-			<language tag="en-US">en-US/en-US.com_painter.sys.ini</language>
-			<language tag="en-GB">en-GB/en-GB.com_painter.ini</language>
-			<language tag="en-GB">en-GB/en-GB.com_painter.sys.ini</language>
+		<languages folder="admin">
+			<language tag="en-US">language/en-US/en-US.com_painter.ini</language>
+			<language tag="en-US">language/en-US/en-US.com_painter.sys.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_painter.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_painter.sys.ini</language>
 		</languages>
 		<files folder="admin">
 			<filename>access.xml</filename>

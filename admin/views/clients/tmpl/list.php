@@ -1,8 +1,8 @@
 <?php
 	defined('_JEXEC') or die('Restricted access');
-	$user	=& JFactory::getUser();
-	$uri	=& JURI::getInstance();
-	$base = $uri->root();
+	$user		=& JFactory::getUser();
+	$ordering	= $this->filter->get('list.ordering');
+	$order_dir	= $this->filter->get('list.direction');
 ?>
 
 <script type="text/javascript">
@@ -12,11 +12,12 @@
 <form action="index.php" method="post" name="adminForm">
 	<input type="hidden" name="option" value="com_painter" />
 	<input type="hidden" name="task" value="" />
+	<input type="hidden" name="view" value="clients" />
 	<input type="hidden" name="chosen" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
 	<input type="hidden" name="hidemainmenu" value="1" />
-	<input type="hidden" name="filter_order" value="<? echo $this->filter->filter_order; ?>" />
-	<input type="hidden" name="filter_order_Dir" value="<? echo $this->filter->filter_order_Dir; ?>" />
+	<input type="hidden" name="filter_order" value="<? echo $ordering; ?>" />
+	<input type="hidden" name="filter_order_Dir" value="<? echo $order_dir; ?>" />
 	<? echo JHTML::_('form.token')."\n"; ?>
 	<table class="adminlist">
 		<thead>
@@ -28,17 +29,17 @@
 					<input type="checkbox" name="toggle" value="" onclick="checkAll(<? echo count( $this->items ); ?>);" />
 				</th>
 				<th class="title">
-					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_CLIENT_NAME_LABEL'), 'client_name', $this->filter->filter_order_Dir, $this->filter->filter_order, 'filter'); ?>
+					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_CLIENT_NAME_LABEL'), 'client_name', $order_dir, $ordering, 'filter'); ?>
 				</th>
 				<th width="70" nowrap="nowrap">
-					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_PUBLISHED_LABEL'), 'published', $this->filter->filter_order_Dir, $this->filter->filter_order, 'filter'); ?>
+					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_PUBLISHED_LABEL'), 'c.published', $order_dir, $ordering, 'filter'); ?>
 				</th>
 				<th width="75" nowrap="nowrap">
-					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ORDERING_LABEL'), 'ordering', $this->filter->filter_order_Dir, $this->filter->filter_order, 'filter');?>
-					<? echo JHTML::_('grid.order', $this->items); ?>
+					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ORDERING_LABEL'), 'c.ordering', $order_dir, $ordering, 'filter');?>
+					<? echo JHtml::_('grid.order',  $this->items, 'filesave.png', 'clients.saveorder'); ?>
 				</th>
 				<th width="120" nowrap="nowrap">
-					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ACCESS_LABEL'), 'access', $this->filter->filter_order_Dir, $this->filter->filter_order, 'filter'); ?>
+					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ACCESS_LABEL'), 'c.access', $order_dir, $ordering, 'filter'); ?>
 				</th>
 				<th>
 					<? echo JText::_('COM_PAINTER_LIST_CLIENT_DESCRIPTION_LABEL'); ?>
@@ -53,16 +54,8 @@
 		$k = 0;
 		for($i=0; $i < count($this->items); $i++){
 			$row		= $this->items[$i];
-			$access		= JHTML::_('grid.access', $row, $i);
 			$checked	= JHTML::_('grid.id', $i, $row->client_id );
 			$link		= JRoute::_('index.php?option=com_painter&task=client.edit&client_id='. $row->client_id.'&'.JUtility::getToken().'=1');
-			if($row->published){
-				$publish_img = "publish_g.png";
-				$publish_alt = "Published";
-			}else{
-				$publish_img = "publish_x.png";
-				$publish_alt = "Unpublished";
-			}
 			?>
 			<tr class="row<? echo $k; ?>">
 				<td>
@@ -82,15 +75,15 @@
 					?>
 				</td>
 				<td align="center">
-					<a href="javascript:void(0);" onclick="return listItemTask('cb<? echo $i; ?>', '<? echo $row->published ? 'unpublish' : 'publish'; ?>')"><img src="images/<? echo $publish_img; ?>" width="16" height="16" border="0" alt="<? echo $publish_alt; ?>" /></a>
+					<?php echo JHtml::_('jgrid.published', $row->published, $i, 'clients.', true, 'cb'); ?>
 				</td>
 				<td class="order">
-					<span><? echo $this->page->orderUpIcon( $i, ($i > 1), 'orderup', 'Move Up'); ?></span>
-					<span><? echo $this->page->orderDownIcon( $i, count($this->items), true, 'orderdown', 'Move Down'); ?></span>
+					<span><? echo $this->page->orderUpIcon( $i, ($i > 0), 'clients.orderup', 'Move Up'); ?></span>
+					<span><? echo $this->page->orderDownIcon( $i, count($this->items), true, 'clients.orderdown', 'Move Down'); ?></span>
 					<input type="text" name="order[]" size="5" value="<? echo $row->ordering; ?>" class="text_area" style="text-align: center" />
 				</td>
 				<td align="center">
-					<? echo $access; ?>
+					<? echo $row->access; ?>
 				</td>
 				<td>
 					<? echo $row->client_description; ?>

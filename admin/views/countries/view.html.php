@@ -43,7 +43,7 @@ class PainterViewCountries extends JView
 			JToolBarHelper::title(JText::_('COM_PAINTER_MANAGE_COUNTRIES'), 'generic.png');
 			JToolBarHelper::addNewX('country.add');
 			JToolBarHelper::editListX('country.edit');
-			JToolBarHelper::deleteList('country.remove');
+			JToolBarHelper::deleteList('COM_PAINTER_COUNTRY_DELETE_WARNING_MSG', 'countries.delete');
 			// GET DATA FROM THE MODEL
 			$this->filter	= $this->get('State');
 			$this->items	= $this->get('Items');

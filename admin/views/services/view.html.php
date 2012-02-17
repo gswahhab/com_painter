@@ -43,7 +43,7 @@ class PainterViewServices extends JView
 			JToolBarHelper::title(JText::_('COM_PAINTER_MANAGE_SERVICES'), 'generic.png');
 			JToolBarHelper::addNewX('service.add');
 			JToolBarHelper::editListX('service.edit');
-			JToolBarHelper::deleteList('service.remove');
+			JToolBarHelper::deleteList('COM_PAINTER_SERVICE_DELETE_WARNING_MSG', 'services.delete');
 			// GET DATA FROM THE MODEL
 			$this->filter	= $this->get('State');
 			$this->items	= $this->get('Items');

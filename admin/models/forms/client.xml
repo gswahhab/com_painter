@@ -7,7 +7,7 @@
 			<field name="client_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_CLIENT_NAME_LABEL" description="COM_PAINTER_CLIENT_NAME_DESC" />
 			<field name="client_number" type="text" class="inputbox" size="32" label="COM_PAINTER_CLIENT_NUMBER_LABEL" description="COM_PAINTER_CLIENT_NUMBER_DESC" />
 			<field name="client_contact" type="text" class="inputbox" size="32" label="COM_PAINTER_CLIENT_CONTACT_LABEL" description="COM_PAINTER_CLIENT_CONTACT_DESC" />
-			<field name="client_email" type="text" class="inputbox validate-email" size="32" required="true" />
+			<field name="client_email" type="text" class="inputbox validate-email" size="32" required="true" label="COM_PAINTER_CLIENT_EMAIL_LABEL" description="COM_PAINTER_CLIENT_EMAIL_DESC" />
 		</fieldset>
 	</fields>
 	<fields name="options">

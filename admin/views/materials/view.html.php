@@ -43,7 +43,7 @@ class PainterViewMaterials extends JView
 			JToolBarHelper::title(JText::_('COM_PAINTER_MANAGE_MATERIALS'), 'generic.png');
 			JToolBarHelper::addNewX('material.add');
 			JToolBarHelper::editListX('material.edit');
-			JToolBarHelper::deleteList('material.remove');
+			JToolBarHelper::deleteList('COM_PAINTER_MATERIAL_DELETE_WARNING_MSG', 'materials.delete');
 			// GET DATA FROM THE MODEL
 			$this->filter	= $this->get('State');
 			$this->items	= $this->get('Items');

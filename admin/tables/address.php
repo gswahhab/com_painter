@@ -46,6 +46,13 @@ class TableAddress extends JTable
 	}
 
 	function bind($array, $ignore=''){
+		if(key_exists('base', $array)){
+			if(is_array($array['base'])){
+				if(!parent::bind($array['base'], $ignore)){
+					return false;
+				}
+			}
+		}
 		if(key_exists('options', $array)){
 			if(is_array($array['options'])){
 				if(!parent::bind($array['options'], $ignore)){
@@ -54,6 +61,13 @@ class TableAddress extends JTable
 			}
 		}
 		return parent::bind($array, $ignore);
+	}
+	
+	function store($updateNulls = false){
+		if(!$this->ordering){
+			$this->ordering = $this->getNextOrder();
+		}
+		return parent::store($updateNulls);
 	}
 	
 	function loadBilling(){

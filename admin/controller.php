@@ -36,22 +36,20 @@ class PainterController extends JController
 	 *
 	 * @return  JController  A JController object to support chaining.
 	 */
-	public function display()
+	public function display($cachable = false, $urlparams = false)
 	{
 		$document = JFactory::getDocument();
 		$viewType = $document->getType();
 		$viewLayout = JRequest::getCmd('layout', 'default');
 		$viewName = JRequest::getCmd('view', $this->default_view);
 		switch($viewLayout){
-		case "list":
-			PainterHelper::addSubmenu();
-			$modelName = $viewName;
-			break;
 		case "edit":
 			$modelName = substr($viewName, 0, strlen($viewName) - 1);
 			break;
+		case "list":
 		default:
 			$modelName = $viewName;
+			PainterHelper::addSubmenu(strtolower($viewName));
 			break;
 		}
 		$view = $this->getView($viewName, $viewType, '', array('base_path' => $this->basePath, 'layout' => $viewLayout));

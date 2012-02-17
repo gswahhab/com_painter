@@ -43,7 +43,7 @@ class PainterViewCustomers extends JView
 			JToolBarHelper::title(JText::_('COM_PAINTER_MANAGE_REGIONS'), 'generic.png');
 			JToolBarHelper::addNewX('region.add');
 			JToolBarHelper::editListX('region.edit');
-			JToolBarHelper::deleteList('region.remove');
+			JToolBarHelper::deleteList('COM_PAINTER_REGION_DELETE_WARNING_MSG', 'regions.delete');
 			// GET DATA FROM THE MODEL
 			$this->filter	= $this->get('State');
 			$this->items	= $this->get('Items');

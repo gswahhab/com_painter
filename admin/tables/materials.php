@@ -2,7 +2,7 @@
 // NO DIRECT ACCESS
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-class TableItems extends JTable
+class TableMaterials extends JTable
 {
 	/** @var int Primary Key */
 	var $material_id		= null;
@@ -27,11 +27,18 @@ class TableItems extends JTable
 	/** @var int ACL View Level */
 	var $access				= null;
 	
-	function TableItems(&$db){
-		parent::__construct('#__painter_items', 'item_id', $db);
+	function TableMaterials(&$db){
+		parent::__construct('#__painter_materials', 'material_id', $db);
 	}
 	
 	function bind($array, $ignore=''){
+		if(key_exists('base', $array)){
+			if(is_array($array['base'])){
+				if(!parent::bind($array['base'], $ignore)){
+					return false;
+				}
+			}
+		}
 		if(key_exists('options', $array)){
 			if(is_array($array['options'])){
 				if(!parent::bind($array['options'], $ignore)){
@@ -41,5 +48,11 @@ class TableItems extends JTable
 		}
 		return parent::bind($array, $ignore);
 	}
+	
+	function store($updateNulls = false){
+		if(!$this->ordering){
+			$this->ordering = $this->getNextOrder();
+		}
+		return parent::store($updateNulls);
+	}
 }
-?>

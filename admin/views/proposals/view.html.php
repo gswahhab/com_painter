@@ -43,7 +43,7 @@ class PainterViewProposals extends JView
 			JToolBarHelper::title(JText::_('COM_PAINTER_MANAGE_PROPOSALS'), 'generic.png');
 			JToolBarHelper::addNewX('proposal.add');
 			JToolBarHelper::editListX('proposal.edit');
-			JToolBarHelper::deleteList('proposal.remove');
+			JToolBarHelper::deleteList('COM_PAINTER_PROPOSAL_DELETE_WARNING_MSG', 'proposals.delete');
 			// GET DATA FROM THE MODEL
 			$this->filter	= $this->get('State');
 			$this->items	= $this->get('Items');
