@@ -61,8 +61,13 @@ DROP TABLE IF EXISTS `#__painter_customers`;
 CREATE TABLE `#__painter_customers` (
 	`customer_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 	`customer_name` VARCHAR(128) DEFAULT NULL,
+	`customer_title` VARCHAR(128) DEFAULT NULL,
 	`customer_number` VARCHAR(16) DEFAULT NULL,
 	`customer_logo` VARCHAR(128) DEFAULT NULL,
+	`customer_website` TINYTEXT DEFAULT NULL,
+	`customer_email` TINYTEXT DEFAULT NULL,
+	`customer_warranty` TEXT DEFAULT NULL,
+	`customer_notes` TEXT DEFAULT NULL,
 	`ordering` INT(11) UNSIGNED DEFAULT NULL,
 	`published` TINYINT(1) UNSIGNED DEFAULT 0,
 	`checked_out` INT(11) UNSIGNED DEFAULT 0,
@@ -70,7 +75,9 @@ CREATE TABLE `#__painter_customers` (
 	`modified` DATETIME DEFAULT '0000-00-00 00:00:00',
 	`modified_by` INT(11) UNSIGNED DEFAULT 0,
 	`access` INT(11) UNSIGNED DEFAULT NULL,
-	PRIMARY KEY (`customer_id`)
+	`user_id` INT(11) UNSIGNED DEFAULT NULL,
+	PRIMARY KEY (`customer_id`),
+	KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `#__painter_items`;

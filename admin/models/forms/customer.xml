@@ -2,10 +2,16 @@
 <form>
 	<fields name="base">
 		<fieldset name="base" label="COM_PAINTER_CUSTOMER_BASIC_LEGEND">
-			<field name="customer_id" type="hidden" />
-			<field name="customer_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_CUSTOMER_NAME_LABEL" description="COM_PAINTER_CUSTOMER_NAME_DESC" />
-			<field name="customer_number" type="text" class="inputbox" size="32" label="COM_PAINTER_CUSTOMER_NUMBER_LABEL" description="COM_PAINTER_CUSTOMER_NUMBER_DESC" />
-			<field name="customer_logo" type="text" class="inputbox" size="32" label="COM_PAINTER_CUSTOMER_LOGO_LABEL" description="COM_PAINTER_CUSTOMER_LOGO_DESC" />
+			<field name="customer_id" type="hidden" class="validate-numeric" />
+			<field name="user_id" type="user" class="validate-numeric" required="true" label="COM_PAINTER_USER_ID_LABEL" description="COM_PAINTER_USER_ID_DESC" />
+			<field name="customer_logo" type="text" class="inputbox" size="16" label="COM_PAINTER_CUSTOMER_LOGO_LABEL" description="COM_PAINTER_CUSTOMER_LOGO_DESC" />
+			<field name="customer_number" type="text" class="inputbox" size="16" label="COM_PAINTER_CUSTOMER_NUMBER_LABEL" description="COM_PAINTER_CUSTOMER_NUMBER_DESC" />
+			<field name="customer_name" type="text" class="inputbox" size="64" required="true" label="COM_PAINTER_CUSTOMER_NAME_LABEL" description="COM_PAINTER_CUSTOMER_NAME_DESC" />
+			<field name="customer_title" type="text" class="inputbox" size="64" label="COM_PAINTER_CUSTOMER_TITLE_LABEL" description="COM_PAINTER_CUSTOMER_TITLE_DESC" />
+			<field name="customer_website" type="text" class="inputbox validate-url" size="64" label="COM_PAINTER_CUSTOMER_WEBSITE_LABEL" description="COM_PAINTER_CUSTOMER_WEBSITE_LABEL" />
+			<field name="customer_email" type="text" class="inputbox validate-email" size="64" required="true" label="COM_PAINTER_CUSTOMER_EMAIL_LABEL" description="COM_PAINTER_CUSTOMER_EMAIL_DESC" />
+			<field name="customer_warranty" type="textarea" class="" cols="32" rows="10" required="true" label="COM_PAINTER_CUSTOMER_WARRANTY_LABEL" description="COM_PAINTER_CUSTOMER_WARRANTY_DESC" />
+			<field name="customer_notes" type="textarea" class="" cols="32" rows="10" label="COM_PAINTER_CUSTOMER_NOTES_LABEL" description="COM_PAINTER_CUSTOMER_NOTES_DESC" />
 		</fieldset>
 	</fields>
 	<fields name="options">
