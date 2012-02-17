@@ -20,6 +20,18 @@ CREATE TABLE `#__painter_addresses` (
 	KEY `country_id` (`country_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `#__painter_address_groups`;
+CREATE TABLE `#__painter_address_groups` (
+	`group_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`address_id` INT(11) UNSIGNED DEFAULT NULL,
+	`customer_id` INT(11) UNSIGNED DEFAULT NULL,
+	`client_id` INT(11) UNSIGNED DEFAULT NULL,
+	PRIMARY KEY (`group_id),
+	KEY `address_id` (`address_id`),
+	KEY `customer_id` (`customer_id`),
+	KEY `client_id` (`client_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `#__painter_clients`;
 CREATE TABLE `#__painter_clients` (
 	`client_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,

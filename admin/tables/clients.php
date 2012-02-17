@@ -12,6 +12,8 @@ class TableClients extends JTable
 	var $client_number		= null;
 	/** @var string Client Contact */
 	var $client_contact		= null;
+	/** @var string Client Phone */
+	var $client_phone		= null;
 	/** @var string Client Email */
 	var $client_email		= null;
 	/** @var int */

@@ -2,7 +2,7 @@
 // NO DIRECT ACCESS
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-class TableAddress extends JTable
+class TableAddresses extends JTable
 {
 	/** @var int Primary Key */
 	var $address_id				= null;
@@ -41,8 +41,8 @@ class TableAddress extends JTable
 	/** @var int KEY Customer */
 	var $customer_id			= null;
 	
-	function TableAddress(&$db){
-		parent::__construct('#__painter_address', 'address_id', $db);
+	function TableAddresses(&$db){
+		parent::__construct('#__painter_addresses', 'address_id', $db);
 	}
 
 	function bind($array, $ignore=''){
