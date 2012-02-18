@@ -1,4 +1,5 @@
-DROP TABLE IF EXISTS `#__painter_address`;
+DROP TABLE IF EXISTS `#__painter_addresses`;
+DROP TABLE IF EXISTS `#__painter_address_groups`;
 DROP TABLE IF EXISTS `#__painter_clients`;
 DROP TABLE IF EXISTS `#__painter_countries`;
 DROP TABLE IF EXISTS `#__painter_customers`;

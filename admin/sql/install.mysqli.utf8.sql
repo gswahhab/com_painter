@@ -23,6 +23,8 @@ CREATE TABLE `#__painter_addresses` (
 DROP TABLE IF EXISTS `#__painter_address_groups`;
 CREATE TABLE `#__painter_address_groups` (
 	`group_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`modified` DATETIME DEFAULT '0000-00-00 00:00:00',
+	`modified_by` INT(11) UNSIGNED DEFAULT 0,
 	`address_id` INT(11) UNSIGNED DEFAULT NULL,
 	`customer_id` INT(11) UNSIGNED DEFAULT NULL,
 	`client_id` INT(11) UNSIGNED DEFAULT NULL,
