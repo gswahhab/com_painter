@@ -28,7 +28,7 @@ CREATE TABLE `#__painter_address_groups` (
 	`address_id` INT(11) UNSIGNED DEFAULT NULL,
 	`customer_id` INT(11) UNSIGNED DEFAULT NULL,
 	`client_id` INT(11) UNSIGNED DEFAULT NULL,
-	PRIMARY KEY (`group_id),
+	PRIMARY KEY (`group_id`),
 	KEY `address_id` (`address_id`),
 	KEY `customer_id` (`customer_id`),
 	KEY `client_id` (`client_id`)
