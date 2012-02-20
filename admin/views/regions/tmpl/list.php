@@ -82,7 +82,7 @@ window.addEvent('domready', function() {
 		for($i=0; $i < count($this->items); $i++){
 			$row		= $this->items[$i];
 			$checked	= JHTML::_('grid.id', $i, $row->region_id );
-			$link		= JRoute::_('index.php?option=com_painter&task=region.edit&region_id='. $row->region_id.'&'.JUtility::getToken().'=1');
+			$link		= JRoute::_('index.php?option=com_painter&task=region.edit&region_id='. $row->region_id.'&tmpl=component&'.JUtility::getToken().'=1');
 			?>
 			<tr class="row<? echo $k; ?>">
 				<td>

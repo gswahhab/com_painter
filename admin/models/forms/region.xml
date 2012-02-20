@@ -4,9 +4,9 @@
 		<fieldset name="base" label="COM_PAINTER_REGION_BASIC_LEGEND">
 			<field name="region_id" type="hidden" class="validate-numeric" />
 			<field name="ordering" type="hidden" class="validate-numeric" />
-			<field name="country_id" type="sql" query="SELECT country_id, country_name FROM `#__painter_countries` WHERE `published` = 1 ORDER BY `ordering`" class="validate-numeric" required="true" label="COM_PAINTER_COUNTRY_SELECT_LABEL" description="COM_PAINTER_COUNTRY_SELECT_DESC" />
+			<field name="country_id" type="sql" query="SELECT country_id, country_name FROM `#__painter_countries` WHERE `published` = 1 ORDER BY `ordering`" key_field="country_id" value_field="country_name" class="validate-numeric" required="true" label="COM_PAINTER_COUNTRY_SELECT_LABEL" description="COM_PAINTER_COUNTRY_SELECT_DESC" />
 			<field name="region_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_REGION_NAME_LABEL" description="COM_PAINTER_REGION_NAME_DESC" />
-			<field name="region_code" type="text" class="inputbox" size="4" required="true" label="COM_PAINTER_REGION_NUMBER_LABEL" description="COM_PAINTER_REGION_NUMBER_DESC" />
+			<field name="region_code" type="text" class="inputbox" size="4" required="true" label="COM_PAINTER_REGION_CODE_LABEL" description="COM_PAINTER_REGION_CODE_DESC" />
 			<field name="region_tax" type="text" class="inputbox validate-numeric" required="true" size="4" label="COM_PAINTER_REGION_TAX_LABEL" description="COM_PAINTER_REGION_TAX_DESC" />
 		</fieldset>
 	</fields>

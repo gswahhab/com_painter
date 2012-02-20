@@ -6,7 +6,6 @@ CREATE TABLE `#__painter_addresses` (
 	`address_city` VARCHAR(64) DEFAULT NULL,
 	`address_postal_code` VARCHAR(16) DEFAULT NULL,
 	`address_phone` VARCHAR(16) DEFAULT NULL,
-	`ordering` INT(11) UNSIGNED DEFAULT NULL,
 	`published` TINYINT(1) UNSIGNED DEFAULT 0,
 	`checked_out` INT(11) UNSIGNED DEFAULT 0,
 	`checked_out_time` DATETIME DEFAULT '0000-00-00 00:00:00',
@@ -23,6 +22,7 @@ CREATE TABLE `#__painter_addresses` (
 DROP TABLE IF EXISTS `#__painter_address_groups`;
 CREATE TABLE `#__painter_address_groups` (
 	`group_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`ordering` INT(11) UNSIGNED DEFAULT NULL,
 	`modified` DATETIME DEFAULT '0000-00-00 00:00:00',
 	`modified_by` INT(11) UNSIGNED DEFAULT 0,
 	`address_id` INT(11) UNSIGNED DEFAULT NULL,
@@ -166,7 +166,9 @@ CREATE TABLE `#__painter_regions` (
 	`modified` DATETIME DEFAULT '0000-00-00 00:00:00',
 	`modified_by` INT(11) UNSIGNED DEFAULT 0,
 	`access` INT(11) UNSIGNED DEFAULT NULL,
-	PRIMARY KEY (`region_id`)
+	`country_id` INT(11) UNSIGNED DEFAULT NULL,
+	PRIMARY KEY (`region_id`),
+	KEY `country_id` (`country_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `#__painter_services`;

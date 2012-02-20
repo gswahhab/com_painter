@@ -3,6 +3,7 @@
 	<fields name="base">
 		<fieldset name="base" label="COM_PAINTER_CUSTOMER_BASIC_LEGEND">
 			<field name="customer_id" type="hidden" class="validate-numeric" />
+			<field name="ordering" type="hidden" class="validate-numeric" />
 			<field name="user_id" type="user" class="validate-numeric" required="true" label="COM_PAINTER_USER_ID_LABEL" description="COM_PAINTER_USER_ID_DESC" />
 			<field name="customer_logo" type="text" class="inputbox" size="16" label="COM_PAINTER_CUSTOMER_LOGO_LABEL" description="COM_PAINTER_CUSTOMER_LOGO_DESC" />
 			<field name="customer_number" type="text" class="inputbox" size="16" label="COM_PAINTER_CUSTOMER_NUMBER_LABEL" description="COM_PAINTER_CUSTOMER_NUMBER_DESC" />

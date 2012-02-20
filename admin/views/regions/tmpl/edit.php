@@ -10,16 +10,16 @@
 window.addEvent('domready', function() {
 	$$('button.modal').invoke('addEvent', 'click', function(someEvent){
 		if($(someEvent.target).hasClass('apply')){
-			someTask = 'country.apply';
+			someTask = 'region.apply';
 		}
 		if($(someEvent.target).hasClass('save')){
-			someTask = 'country.save';
+			someTask = 'region.save';
 		}
 		if($(someEvent.target).hasClass('save2new')){
-			someTask = 'country.save2new';
+			someTask = 'region.save2new';
 		}
 		if($(someEvent.target).hasClass('cancel')){
-			someTask = 'country.cancel';
+			someTask = 'region.cancel';
 		}
 		Joomla.submitform(someTask, document.adminForm);
 	});
@@ -29,6 +29,7 @@ window.addEvent('domready', function() {
 
 <form action="index.php" method="post" name="adminForm" class="form-validate" enctype="multipart/form-data">
 	<input type="hidden" name="option" value="com_painter" />
+	<input type="hidden" name="tmpl" value="component" />
 	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="hidemainmenu" value="0" />
 	<? echo JHTML::_('form.token')."\n"; ?>

@@ -28,6 +28,8 @@ class TableRegions extends JTable
 	var $access				= null;
 	/** @var int */
 	var $user_id			= null;
+	/** @var int KEY */
+	var $country_id			= null;
 	
 	function TableRegions(&$db){
 		parent::__construct('#__painter_regions', 'region_id', $db);
@@ -55,6 +57,11 @@ class TableRegions extends JTable
 		if(!$this->ordering){
 			$this->ordering = $this->getNextOrder();
 		}
-		return parent::store($updateNulls);
+		$success = parent::store($updateNulls);
+		if($success && $this->country_id){
+			$this->reorder("`country_id` = {$this->country_id}");
+		}
+		
+		return $success;
 	}
 }

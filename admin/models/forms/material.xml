@@ -2,7 +2,8 @@
 <form>
 	<fields name="base">
 		<fieldset name="base" label="COM_PAINTER_MATERIAL_BASIC_LEGEND">
-			<field name="material_id" type="hidden" />
+			<field name="material_id" type="hidden" class="validate-numeric" />
+			<field name="ordering" type="hidden" class="validate-numeric" />
 			<field name="material_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_MATERIAL_NAME_LABEL" description="COM_PAINTER_MATERIAL_NAME_DESC" />
 			<field name="material_number" type="text" class="inputbox" size="32" label="COM_PAINTER_MATERIAL_NUMBER_LABEL" description="COM_PAINTER_MATERIAL_NUMBER_DESC" />
 			<field name="material_desc" type="textarea" class="inputbox" label="COM_PAINTER_MATERIAL_DESC_LABEL" description="COM_PAINTER_MATERIAL_DESC_DESC" />

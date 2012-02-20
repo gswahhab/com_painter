@@ -1,5 +1,6 @@
 <?php
 	defined('_JEXEC') or die('Restricted access');
+	JHtml::_('behavior.keepalive');
 ?>
 
 <script type="text/javascript">
