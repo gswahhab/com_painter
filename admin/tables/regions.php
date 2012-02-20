@@ -28,8 +28,6 @@ class TableRegions extends JTable
 	var $access				= null;
 	/** @var int */
 	var $user_id			= null;
-	/** @var int */
-	var $access				= null;
 	
 	function TableRegions(&$db){
 		parent::__construct('#__painter_regions', 'region_id', $db);

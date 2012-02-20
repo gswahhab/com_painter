@@ -3,8 +3,8 @@
 	<fields name="params">
 		<fieldset name="params" label="COM_PAINTER_OPTIONS_FIELDSET_LEGEND">
 			<field name="default_itemid" type="menuitem" label="COM_PAINTER_DEFAULT_ITEMID_LABEL" description="COM_PAINTER_DEFAULT_ITEMID_DESC" />
-			<field name="noauth_itemid" type="menuitem" label="COM_PAINTER_REDIRECT_NOAUTH_LABEL" description="COM_PAINTER_REDIRECT_NOAUTH_DESC" />
-			<field name="upgrade_itemid" type="menuitem" label="COM_PAINTER_REDIRECT_UPGRADE_LABEL" description="COM_PAINTER_REDIRECT_UPGRADE_DESC" />
+			<field name="noauth_itemid" type="menuitem" label="COM_PAINTER_REDIRECT_NOAUTH_ITEMID_LABEL" description="COM_PAINTER_REDIRECT_NOAUTH_ITEMID_DESC" />
+			<field name="upgrade_itemid" type="menuitem" label="COM_PAINTER_REDIRECT_UPGRADE_ITEMID_LABEL" description="COM_PAINTER_REDIRECT_UPGRADE_ITEMID_DESC" />
 			<field name="customer_group" type="accesslevel" label="COM_PAINTER_DEFAULT_CUSTOMER_GROUP_LABEL" description="COM_PAINTER_DEFAULT_CUSTOMER_GROUP_DESC" />
 			<field name="premium_membership" type="accesslevel" label="COM_PAINTER_PREMIUM_MEMBERSHIP_LABEL" description="COM_PAINTER_PREMIUM_MEMBERSHIP_DESC" />
 			<field name="free_membership" type="accesslevel" label="COM_PAINTER_FREE_MEMBERSHIP_LABEL" description="COM_PAINTER_FREE_MEMBERSHIP_DESC" />

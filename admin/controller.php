@@ -10,12 +10,9 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // PRIVILEGE CHECK
-if(!JFactory::getUser()->authorise('core.manage', 'com_wholesale')){
+if(!JFactory::getUser()->authorise('core.manage', 'com_painter')){
 	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }
-
-// REQUIRE HELPER FILE
-//JLoader::register('PainterHelper', dirname(__FILE__).DS.'helpers'.DS.'painter.php');
 
 // IMPORT CONTROLLER LIBRARY
 jimport('joomla.application.component.controller');
@@ -42,9 +39,20 @@ class PainterController extends JController
 		$viewType = $document->getType();
 		$viewLayout = JRequest::getCmd('layout', 'default');
 		$viewName = JRequest::getCmd('view', $this->default_view);
+		// SWITCH CASE FOR IRREGULAR ENGLISH PLURALS
 		switch($viewLayout){
 		case "edit":
-			$modelName = substr($viewName, 0, strlen($viewName) - 1);
+			switch($viewName){
+			case "countries":
+				$modelName = "country";
+				break;
+			case "addresses":
+				$modelName = "address";
+			default:
+				// DEFAULT PLURAL TO SINGULAR
+				$modelName = substr($viewName, 0, strlen($viewName) - 1);
+				break;
+			}
 			break;
 		case "list":
 		default:

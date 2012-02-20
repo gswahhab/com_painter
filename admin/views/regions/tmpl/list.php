@@ -3,22 +3,46 @@
 	$user		= JFactory::getUser();
 	$ordering	= $this->filter->get('list.ordering');
 	$order_dir	= $this->filter->get('list.direction');
+	require_once(JPATH_ROOT.DS.'libraries'.DS.'joomla'.DS.'html'.DS.'html'.DS.'behavior.php');
+	JHtmlBehavior::framework(true);
 ?>
 
 <script type="text/javascript">
 //<![CDATA[
+window.addEvent('domready', function() {
+	$$('button.modal').invoke('addEvent', 'click', function(someEvent){
+		if($(someEvent.target).hasClass('add')){
+			someTask = 'region.add';
+		}
+		if($(someEvent.target).hasClass('edit')){
+			someTask = 'region.edit';
+		}
+		if($(someEvent.target).hasClass('delete')){
+			someTask = 'regions.delete';
+		}
+		Joomla.submitform(someTask, document.adminForm);
+	});
+});
 //]]>
 </script>
 <form action="index.php" method="post" name="adminForm">
 	<input type="hidden" name="option" value="com_painter" />
 	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="view" value="regions" />
+	<input type="hidden" name="tmpl" value="component" />
 	<input type="hidden" name="chosen" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
 	<input type="hidden" name="hidemainmenu" value="1" />
 	<input type="hidden" name="filter_order" value="<? echo $ordering; ?>" />
 	<input type="hidden" name="filter_order_Dir" value="<? echo $order_dir; ?>" />
 	<? echo JHTML::_('form.token')."\n"; ?>
+	<fieldset class="filter">
+		<div class="right">
+			<button type="button" class="modal add"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_ADD'); ?></button>
+			<button type="button" class="modal edit"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_EDIT'); ?></button>
+			<button type="button" class="modal delete"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_DELETE'); ?></button>
+		</div>
+	</fieldset>
 	<table class="adminlist">
 		<thead>
 			<tr>
@@ -31,6 +55,12 @@
 				<th class="title">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_REGION_NAME_LABEL'), 'region_name', $order_dir, $ordering, 'filter'); ?>
 				</th>
+				<th>
+					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_REGION_CODE_LABEL'), 'region_code', $order_dir, $ordering, 'filter'); ?>
+				</th>
+				<th>
+					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_REGION_TAX_LABEL'), 'region_tax', $order_dir, $ordering, 'filter'); ?>
+				</th>
 				<th width="70" nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_PUBLISHED_LABEL'), 'r.published', $order_dir, $ordering, 'filter'); ?>
 				</th>
@@ -40,9 +70,6 @@
 				</th>
 				<th width="120" nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ACCESS_LABEL'), 'r.access', $order_dir, $ordering, 'filter'); ?>
-				</th>
-				<th>
-					<? echo JText::_('COM_PAINTER_LIST_REGION_DESCRIPTION_LABEL'); ?>
 				</th>
 				<th width="1%">
 					<? echo JText::_('COM_PAINTER_LIST_REGION_ID_LABEL'); ?>
@@ -74,6 +101,12 @@
 					}
 					?>
 				</td>
+				<td>
+					<? echo $row->region_code; ?>
+				</td>
+				<td>
+					<? echo $row->region_tax; ?>
+				</td>
 				<td align="center">
 					<?php echo JHtml::_('jgrid.published', $row->published, $i, 'regions.', true, 'cb'); ?>
 				</td>
@@ -84,9 +117,6 @@
 				</td>
 				<td align="center">
 					<? echo $row->access; ?>
-				</td>
-				<td>
-					<? echo $row->region_description; ?>
 				</td>
 				<td>
 					<? echo $row->region_id; ?>

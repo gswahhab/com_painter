@@ -11,7 +11,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport( 'joomla.application.component.view' );
 
-class PainterViewCustomers extends JView
+class PainterViewRegions extends JView
 {
 	protected $filter;
 	protected $items;
@@ -33,17 +33,9 @@ class PainterViewCustomers extends JView
 		$this->setLayout($layout);
 		switch($layout){
 		case "edit":
-			JToolBarHelper::title(JText::_('COM_PAINTER_EDIT_REGION_SETTINGS'), 'generic.png');
-			JToolBarHelper::save('region.save');
-			JToolBarHelper::apply('region.apply');
-			JToolBarHelper::cancel('region.cancel');
 			$this->form = $this->get('Form');
 			break;
 		case "list":
-			JToolBarHelper::title(JText::_('COM_PAINTER_MANAGE_REGIONS'), 'generic.png');
-			JToolBarHelper::addNewX('region.add');
-			JToolBarHelper::editListX('region.edit');
-			JToolBarHelper::deleteList('COM_PAINTER_REGION_DELETE_WARNING_MSG', 'regions.delete');
 			// GET DATA FROM THE MODEL
 			$this->filter	= $this->get('State');
 			$this->items	= $this->get('Items');

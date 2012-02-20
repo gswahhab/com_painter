@@ -20,6 +20,8 @@ class PainterControllerCountries extends JControllerAdmin
 	function __construct()
 	{
 		parent::__construct();
+		$this->view_item = "countries&tmpl=component";
+		$this->view_list = "countries&tmpl=component";
 	}
 	/**
 	 * Method to display the view
@@ -51,8 +53,14 @@ class PainterControllerCountries extends JControllerAdmin
 			$name = 'Country';
 			break;
 		default:
+			if(JRequest::getCmd('layout') == 'edit'){
+				$name = 'Country';
+			}
 			break;
 		}
 		return parent::getModel($name, 'PainterModel', $config);
+	}
+	
+	public function delete(){
 	}
 }
