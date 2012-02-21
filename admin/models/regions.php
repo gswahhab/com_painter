@@ -47,14 +47,22 @@ class PainterModelRegions extends JModelList
 		$table	= $this->getTable('Regions');
 		
 		// SET THE QUERY
-		$query->select("r.*, v.title AS `access`");
+		$query->select("r.*, c.country_name, v.title AS `access`");
 		$query->from($table->getTableName()." AS r");
+		$query->leftJoin("#__painter_countries c USING(`country_id`)");
 		$query->leftJoin("#__viewlevels v ON r.access = v.id");
 		
 		// ADD THE ORDERING CLAUSE
 		$ordering = $this->state->get('list.ordering');
 		$order_dir = $this->state->get('list.direction');
-		$query->order($db->escape($ordering.' '.$order_dir));
+		switch($ordering){
+		case "r.ordering":
+			$query->order($db->escape("c.ordering {$order_dir}, r.ordering {$order_dir}"));
+			break;
+		default:
+			$query->order($db->escape($ordering.' '.$order_dir));
+			break;
+		}
 		
 		return $query;
 	}

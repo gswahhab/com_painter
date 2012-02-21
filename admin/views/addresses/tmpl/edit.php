@@ -1,8 +1,7 @@
 <?php
 	defined('_JEXEC') or die('Restricted access');
-	jimport('joomla.html.pane');
-	$pane	= JPane::getInstance('sliders');
-	JHtml::_('behavior.modal');
+	require_once(JPATH_ROOT.DS.'libraries'.DS.'joomla'.DS.'html'.DS.'html'.DS.'behavior.php');
+	JHtmlBehavior::framework(true);
 	JHtml::_('behavior.formvalidation');
 ?>
 

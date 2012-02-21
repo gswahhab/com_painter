@@ -20,6 +20,8 @@ class PainterControllerRegions extends JControllerAdmin
 	function __construct()
 	{
 		parent::__construct();
+		$this->view_item = "regions&tmpl=component";
+		$this->view_list = "regions&tmpl=component";
 	}
 	/**
 	 * Method to display the view

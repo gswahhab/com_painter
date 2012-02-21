@@ -1,4 +1,4 @@
-a<?php
+<?php
 /**
  * Painter Address View
  * 
@@ -33,17 +33,10 @@ class PainterViewAddresses extends JView
 		$this->setLayout($layout);
 		switch($layout){
 		case "edit":
-			JToolBarHelper::title(JText::_('COM_PAINTER_EDIT_ADDRESS_SETTINGS'), 'generic.png');
-			JToolBarHelper::save('address.save');
-			JToolBarHelper::apply('address.apply');
-			JToolBarHelper::cancel('address.cancel');
+			// GET DATA FROM THE MODEL
 			$this->form = $this->get('Form');
 			break;
 		case "list":
-			JToolBarHelper::title(JText::_('COM_PAINTER_MANAGE_ADDRESSES'), 'generic.png');
-			JToolBarHelper::addNewX('address.add');
-			JToolBarHelper::editListX('address.edit');
-			JToolBarHelper::deleteList('COM_PAINTER_ADDRESS_DELETE_WARNING_MSG', 'addresses.delete');
 			// GET DATA FROM THE MODEL
 			$this->filter	= $this->get('State');
 			$this->items	= $this->get('Items');

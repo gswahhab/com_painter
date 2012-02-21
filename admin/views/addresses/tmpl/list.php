@@ -3,10 +3,32 @@
 	$user		= JFactory::getUser();
 	$ordering	= $this->filter->get('list.ordering');
 	$order_dir	= $this->filter->get('list.direction');
+	require_once(JPATH_ROOT.DS.'libraries'.DS.'joomla'.DS.'html'.DS.'html'.DS.'behavior.php');
+	JHtmlBehavior::framework(true);
 ?>
 
 <script type="text/javascript">
 //<![CDATA[
+window.addEvent('domready', function() {
+	$$('button.modal').invoke('addEvent', 'click', function(someEvent){
+		if($(someEvent.target).hasClass('add')){
+			someTask = 'address.add';
+		}
+		if($(someEvent.target).hasClass('edit')){
+			someTask = 'address.edit';
+		}
+		if($(someEvent.target).hasClass('delete')){
+			someTask = 'addresses.delete';
+		}
+		if($(someEvent.target).hasClass('cancel')){
+			if(window.parent){
+				window.parent.SqueezeBox.close();
+			}
+			return true;
+		}
+		Joomla.submitform(someTask, document.adminForm);
+	});
+});
 //]]>
 </script>
 <form action="index.php" method="post" name="adminForm">
@@ -18,6 +40,14 @@
 	<input type="hidden" name="filter_order" value="<? echo $this->filter->get('list.ordering'); ?>" />
 	<input type="hidden" name="filter_order_Dir" value="<? echo $this->filter->get('list.direction'); ?>" />
 	<? echo JHTML::_('form.token')."\n"; ?>
+	<fieldset class="filter">
+		<div class="right">
+			<button type="button" class="modal add"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_ADD'); ?></button>
+			<button type="button" class="modal edit"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_EDIT'); ?></button>
+			<button type="button" class="modal delete"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_DELETE'); ?></button>
+			<button type="button" class="modal cancel"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_CANCEL'); ?></button>
+		</div>
+	</fieldset>
 	<table class="adminlist">
 		<thead>
 			<tr>
@@ -30,18 +60,24 @@
 				<th class="title">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ADDRESS_NAME_LABEL'), 'address_name', $order_dir, $ordering, 'filter'); ?>
 				</th>
-				<th width="70" nowrap="nowrap">
+				<th>
+					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ADDRESS_CITY_LABEL'), 'address_city', $order_dir, $ordering, 'filter'); ?>
+				</th>
+				<th class="title">
+					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ADDRESS_REGION_LABEL'), 'region_name', $order_dir, $ordering, 'filter'); ?>
+				</th>
+				<th class="title">
+					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ADDRESS_POSTAL_LABEL'), 'address_postal_code', $order_dir, $ordering, 'filter'); ?>
+				</th>
+				<th width="10%" nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_PUBLISHED_LABEL'), 'c.published', $order_dir, $ordering, 'filter'); ?>
 				</th>
-				<th width="75" nowrap="nowrap">
+				<th width="15%" nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ORDERING_LABEL'), 'c.ordering', $order_dir, $ordering, 'filter');?>
 					<? echo JHtml::_('grid.order',  $this->items, 'filesave.png', 'addresses.saveorder'); ?>
 				</th>
-				<th width="120" nowrap="nowrap">
+				<th nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ACCESS_LABEL'), 'c.access', $order_dir, $ordering, 'filter'); ?>
-				</th>
-				<th>
-					<? echo JText::_('COM_PAINTER_LIST_ADDRESS_DESCRIPTION_LABEL'); ?>
 				</th>
 				<th width="1%">
 					<? echo JText::_('COM_PAINTER_LIST_ADDRESS_ID_LABEL'); ?>
@@ -54,7 +90,7 @@
 		for($i=0; $i < count($this->items); $i++){
 			$row		= $this->items[$i];
 			$checked	= JHTML::_('grid.id', $i, $row->address_id );
-			$link		= JRoute::_('index.php?option=com_painter&task=address.edit&address_id='. $row->address_id.'&'.JUtility::getToken().'=1');
+			$link		= JRoute::_('index.php?option=com_painter&task=address.edit&address_id='. $row->address_id.'&tmpl=component&'.JUtility::getToken().'=1');
 			?>
 			<tr class="row<? echo $k; ?>">
 				<td>
@@ -73,6 +109,15 @@
 					}
 					?>
 				</td>
+				<td>
+					<? echo $row->address_city; ?>
+				</td>
+				<td>
+					<? echo $row->region_name; ?>
+				</td>
+				<td>
+					<? echo $row->address_postal_code; ?>
+				</td>
 				<td align="center">
 					<?php echo JHtml::_('jgrid.published', $row->published, $i, 'addresses.', true, 'cb'); ?>
 				</td>
@@ -83,9 +128,6 @@
 				</td>
 				<td align="center">
 					<? echo $row->access; ?>
-				</td>
-				<td>
-					<? echo $row->address_description; ?>
 				</td>
 				<td>
 					<? echo $row->address_id; ?>

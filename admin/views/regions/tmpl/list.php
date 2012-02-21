@@ -20,6 +20,12 @@ window.addEvent('domready', function() {
 		if($(someEvent.target).hasClass('delete')){
 			someTask = 'regions.delete';
 		}
+		if($(someEvent.target).hasClass('cancel')){
+			if(window.parent){
+				window.parent.SqueezeBox.close();
+			}
+			return true;
+		}
 		Joomla.submitform(someTask, document.adminForm);
 	});
 });
@@ -41,6 +47,7 @@ window.addEvent('domready', function() {
 			<button type="button" class="modal add"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_ADD'); ?></button>
 			<button type="button" class="modal edit"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_EDIT'); ?></button>
 			<button type="button" class="modal delete"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_DELETE'); ?></button>
+			<button type="button" class="modal cancel"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_CANCEL'); ?></button>
 		</div>
 	</fieldset>
 	<table class="adminlist">
@@ -61,14 +68,17 @@ window.addEvent('domready', function() {
 				<th>
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_REGION_TAX_LABEL'), 'region_tax', $order_dir, $ordering, 'filter'); ?>
 				</th>
-				<th width="70" nowrap="nowrap">
+				<th>
+					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_COUNTRY_NAME_LABEL'), 'country_name', $order_dir, $ordering, 'filter'); ?>
+				</th>
+				<th nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_PUBLISHED_LABEL'), 'r.published', $order_dir, $ordering, 'filter'); ?>
 				</th>
-				<th width="75" nowrap="nowrap">
+				<th width="15%" nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ORDERING_LABEL'), 'r.ordering', $order_dir, $ordering, 'filter');?>
 					<? echo JHtml::_('grid.order',  $this->items, 'filesave.png', 'regions.saveorder'); ?>
 				</th>
-				<th width="120" nowrap="nowrap">
+				<th nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ACCESS_LABEL'), 'r.access', $order_dir, $ordering, 'filter'); ?>
 				</th>
 				<th width="1%">
@@ -106,6 +116,9 @@ window.addEvent('domready', function() {
 				</td>
 				<td>
 					<? echo $row->region_tax; ?>
+				</td>
+				<td>
+					<? echo $row->country_name; ?>
 				</td>
 				<td align="center">
 					<?php echo JHtml::_('jgrid.published', $row->published, $i, 'regions.', true, 'cb'); ?>

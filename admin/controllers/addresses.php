@@ -20,6 +20,8 @@ class PainterControllerAddresses extends JControllerAdmin
 	function __construct()
 	{
 		parent::__construct();
+		$this->view_item = "addresses&tmpl=component";
+		$this->view_list = "addresses&tmpl=component";
 	}
 	/**
 	 * Method to display the view
@@ -51,6 +53,9 @@ class PainterControllerAddresses extends JControllerAdmin
 			$name = 'Address';
 			break;
 		default:
+			if(JRequest::getCmd('layout') == 'edit'){
+				$name = 'Address';
+			}
 			break;
 		}
 		return parent::getModel($name, 'PainterModel', $config);

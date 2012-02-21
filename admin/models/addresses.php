@@ -21,7 +21,7 @@ class PainterModelAddresses extends JModelList
 	 */
 	public function __construct($config = array()){
 		if(empty($config['filter_fields'])){
-			$config['filter_fields'] = array('address_line1', 'address_city', 'address_postal_code', 'region_id', 'country_id', 'published', 'a.published', 'ordering', 'a.ordering', 'a.access');
+			$config['filter_fields'] = array('address_line1', 'address_city', 'address_postal_code', 'region_id', 'country_id', 'published', 'a.published', 'ordering', 'g.ordering', 'a.access');
 		}
 		parent::__construct($config);
 	}
@@ -33,7 +33,7 @@ class PainterModelAddresses extends JModelList
 	protected function populateState($ordering = null, $direction = null)
 	{
 		// List state information.
-		parent::populateState('a.ordering', 'asc');
+		parent::populateState('g.ordering', 'asc');
 	}
 	/**
 	 * Method to get a JDatabaseQuery object for retrieving the data set from a database.
@@ -42,14 +42,25 @@ class PainterModelAddresses extends JModelList
 	 */
 	public function getListQuery(){
 		// INITIALIZE SINGLETON INSTANCES
-		$db		=& JFactory::getDbo();
-		$query	=& $db->getQuery(true);
-		$table	= $this->getTable('Addresses');
+		$db			=& JFactory::getDbo();
+		$query		=& $db->getQuery(true);
+		$table		= $this->getTable('Addresses');
+		$client		= JRequest::getInt('client_id');
+		$customer	= JRequest::getInt('customer_id');
+		
 		
 		// SET THE QUERY
-		$query->select("a.*, v.title AS `access`");
-		$query->from($table->getTableName()." AS a");
-		$query->leftJoin("#__viewlevels v ON a.access = v.id");
+		$query->select("a.*, CONCAT_WS(' ', `address_line1`, `address_line2`) AS `address_name`, v.title AS `access`");
+		$query->from("`#__painter_address_groups` g");
+		//$query->from($table->getTableName()." AS a");
+		$query->leftJoin("`#__painter_addresses` a USING(`address_id`)");
+		$query->leftJoin("`#__viewlevels` v ON a.`access` = v.`id`");
+		if($client){
+			$query->where("g.`client_id` = {$client}");
+		}
+		if($customer){
+			$query->where("g.`customer_id` = {$customer}");
+		}
 		
 		// ADD THE ORDERING CLAUSE
 		$ordering = $this->state->get('list.ordering');

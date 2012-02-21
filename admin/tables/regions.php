@@ -55,7 +55,7 @@ class TableRegions extends JTable
 	
 	function store($updateNulls = false){
 		if(!$this->ordering){
-			$this->ordering = $this->getNextOrder();
+			$this->ordering = $this->getNextOrder("`country_id` = {$this->country_id}");
 		}
 		$success = parent::store($updateNulls);
 		if($success && $this->country_id){

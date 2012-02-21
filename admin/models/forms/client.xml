@@ -4,12 +4,19 @@
 		<fieldset name="base" label="COM_PAINTER_CLIENT_BASIC_LEGEND">
 			<field name="client_id" type="hidden" class="validate-numeric" />
 			<field name="ordering" type="hidden" class="validate-numeric" />
-			<field name="customer_id" type="sql" key_field="customer_id" value_field="customer_name" query="SELECT `customer_id`, `customer_name` FROM `#__painter_customers` WHERE `published` = 1 ORDER BY `customer_name`" key_field="customer_id" value-field="customer_name" required="true" label="COM_PAINTER_CUSTOMER_ID_LABEL" description="COM_PAINTER_CUSTOMER_ID_DESC" />
+			<field name="customer_id" type="sql" key_field="customer_id" value_field="customer_name" query="SELECT `customer_id`, `customer_name` FROM `#__painter_customers` WHERE `published` = 1 ORDER BY `customer_name`" required="true" label="COM_PAINTER_CUSTOMER_ID_LABEL" description="COM_PAINTER_CUSTOMER_ID_DESC" />
 			<field name="client_name" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_CLIENT_NAME_LABEL" description="COM_PAINTER_CLIENT_NAME_DESC" />
-			<field name="client_number" type="text" class="inputbox validate-tel" size="32" label="COM_PAINTER_CLIENT_NUMBER_LABEL" description="COM_PAINTER_CLIENT_NUMBER_DESC" />
-			<field name="client_contact" type="text" class="inputbox" size="64" required="true" label="COM_PAINTER_CLIENT_CONTACT_LABEL" description="COM_PAINTER_CLIENT_CONTACT_DESC" />
-			<field name="client_phone" type="text" class="inputbox validate-phone" size="64" required="true" label="COM_PAINTER_CLIENT_PHONE_LABEL" description="COM_PAINTER_CLIENT_PHONE_DESC" />
-			<field name="client_email" type="text" class="inputbox validate-email" size="64" required="true" label="COM_PAINTER_CLIENT_EMAIL_LABEL" description="COM_PAINTER_CLIENT_EMAIL_DESC" />
+			<field name="client_email" type="text" class="inputbox validate-email" size="32" required="true" label="COM_PAINTER_CLIENT_EMAIL_LABEL" description="COM_PAINTER_CLIENT_EMAIL_DESC" />
+			<field name="client_phone" type="text" class="inputbox validate-phone" size="32" required="true" label="COM_PAINTER_CLIENT_PHONE_LABEL" description="COM_PAINTER_CLIENT_PHONE_DESC" />
+			<field name="client_fax" type="text" class="inputbox validate-phone" size="32" label="COM_PAINTER_CLIENT_FAX_LABEL" description="COM_PAINTER_CLIENT_FAX_DESC" />
+			<field name="group_id" type="address" class="validate-numeric" foreign_key="client_id" label="COM_PAINTER_DEFAULT_ADDRESS_LABEL" description="COM_PAINTER_DEFAULT_ADDRESS_DESC" />
+			<field name="client_contact" type="text" class="inputbox" size="32" required="true" label="COM_PAINTER_CLIENT_CONTACT_LABEL" description="COM_PAINTER_CLIENT_CONTACT_DESC" />
+			<field name="client_contact_email" type="text" class="inputbox validate-email" size="32" label="COM_PAINTER_CLIENT_CONTACT_EMAIL_LABEL" description="COM_PAINTER_CLIENT_CONTACT_EMAIL_DESC" />
+			<field name="client_contact_phone" type="text" class="inputbox validate-phone" size="32" label="COM_PAINTER_CLIENT_CONTACT_PHONE_LABEL" description="COM_PAINTER_CLIENT_CONTACT_PHONE_DESC" />
+			<field name="client_contact_fax" type="text" class="inputbox validate-phone" size="32" label="COM_PAINTER_CLIENT_CONTACT_EMAIL_LABEL" description="COM_PAINTER_CLIENT_CONTACT_EMAIL_DESC" />
+			<field name="client_notes" type="textarea" class="inputbox" label="COM_PAINTER_CLIENT_NOTES_LABEL" description="COM_PAINTER_CLIENT_NOTES_DESC" />
+			<field name="client_lead" type="text" class="inputbox" size="64" label="COM_PAINTER_CLIENT_LEAD_LABEL" description="COM_PAINTER_CLIENT_LEAD_DESC" />
+			<field name="client_referred" type="text" class="inputbox" size="64" label="COM_PAINTER_CLIENT_REFERRED_LABEL" description="COM_PAINTER_CLIENT_REFERRED_DESC" />
 		</fieldset>
 	</fields>
 	<fields name="options">

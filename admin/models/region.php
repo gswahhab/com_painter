@@ -88,4 +88,14 @@ class PainterModelRegion extends JModelAdmin
 
 		return $data;
 	}
+	
+	public function getReorderConditions($table)
+	{
+		$result = array();
+		if($table->country_id){
+			$result[] = "r.`country_id` = {$table->country_id}";
+		}
+		
+		return $result;
+	}
 }

@@ -33,11 +33,10 @@ class PainterViewCountries extends JView
 		$this->setLayout($layout);
 		switch($layout){
 		case "edit":
-			JToolBarHelper::title(JText::_('COM_PAINTER_EDIT_COUNTRY_SETTINGS'), 'generic.png');
+			// GET DATA FROM THE MODEL
 			$this->form = $this->get('Form');
 			break;
 		case "list":
-			JToolBarHelper::title(JText::_('COM_PAINTER_MANAGE_COUNTRIES'), 'generic.png');
 			// GET DATA FROM THE MODEL
 			$this->filter	= $this->get('State');
 			$this->items	= $this->get('Items');

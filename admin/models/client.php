@@ -87,4 +87,14 @@ class PainterModelClient extends JModelAdmin
 
 		return $data;
 	}
+	
+	public function getReorderConditions($table)
+	{
+		$result = array();
+		if($table->customer_id){
+			$result[] = "c.`customer_id` = {$table->customer_id}";
+		}
+		
+		return $result;
+	}
 }

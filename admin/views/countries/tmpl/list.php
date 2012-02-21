@@ -65,10 +65,10 @@ window.addEvent('domready', function() {
 				<th width="20">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_COUNTRY_CODE_LABEL'), 'country_code', $order_dir, $ordering, 'filter'); ?>
 				</th>
-				<th width="70" nowrap="nowrap">
+				<th width="10%" nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_PUBLISHED_LABEL'), 'c.published', $order_dir, $ordering, 'filter'); ?>
 				</th>
-				<th width="75" nowrap="nowrap">
+				<th width="15%" nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ORDERING_LABEL'), 'c.ordering', $order_dir, $ordering, 'filter');?>
 					<? echo JHtml::_('grid.order',  $this->items, 'filesave.png', 'countries.saveorder'); ?>
 				</th>

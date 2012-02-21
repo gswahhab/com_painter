@@ -25,7 +25,8 @@ class JFormFieldAddress extends JFormField
 	protected function getInput()
 	{
 		// GET THE DATA
-		$table	= JTable::getInstance('Addresses');
+		$doc	= JFactory::getDocument();
+		$table	= JTable::getInstance('Addresses', 'Table');
 		$html	= array();
 		$script	= array();
 		if($this->value){
@@ -34,21 +35,31 @@ class JFormFieldAddress extends JFormField
 			// IS THIS FOR CUSTOMER OR CLIENT?
 		}
 
-		$link	= "index.php?option=com_painter&amp;view=addresses&amp;layout=list";
+		$link	= "index.php?option=com_painter&amp;view=addresses&amp;layout=list&amp;tmpl=component";
 		$html[]	= "<div class=\"fltlft\">";
 		$html[] = "\t<div class=\"button2-left\">";
 		$html[] = "\t\t<div class=\"blank\">";
-		$html[] = "\t\t\t<a href=\"{$link}\" class=\"modal_{$this->id}\" rel=\"{handler: 'iframe', size: {x: 800, y: 500}}\" title=\"\">{JText::_('COM_PAINTER_ADDRESS_BUTTON_LABEL')}</a>";
+		$html[] = "\t\t\t<a href=\"{$link}\" class=\"modal\" id=\"modal_{$this->id}\" rel=\"{handler: 'iframe', size: {x: 700, y: 400}}\" title=\"\">".JText::_('COM_PAINTER_ADDRESS_BUTTON_LABEL')."</a>";
 		$html[] = "\t\t</div>";
-		$html[] = "\</div>";
+		$html[] = "\t</div>";
+		$html[]	= "</div>";
+		$html[]	= "<div class=\"fltlft\">";
+		$html[] = "<p>{$this->value}</p>";
 		$html[]	= "</div>";
 		// CREATE THE HTML ELEMENT STRING
 		
 		// LOAD THE MODAL BEHAVIOR SCRIPT.
-		JHtml::_('behavior.modal', 'a.modal_' . $this->id);
+		JHtml::_('behavior.modal', 'a.modal');
 		
 		// CREATE THE JAVASCRIPT INTERFACE
-		$script
+		$script[] = "window.addEvent('domready', function(){";
+		$script[] = "\tif($('jform_base_client_id').value){";
+		$script[] = "\t\t$('modal_{$this->id}').href += '&amp;client_id=' + $('jform_base_client_id').value;";
+		$script[] = "\t}";
+		$script[] = "});";
+		
+		$script = implode("\n", $script);
+		$doc->addScriptDeclaration($script);
 		
 		return implode("\n", $html);
 	}
