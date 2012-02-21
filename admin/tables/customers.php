@@ -57,6 +57,15 @@ class TableCustomers extends JTable
 		if(!$this->ordering){
 			$this->ordering = $this->getNextOrder();
 		}
-		return parent::store($updateNulls);
+		$user = JFactory::getUser();
+		$date = JFactory::getDate();
+		$this->modified = $date->toMySQL(true);
+		$this->modified_by = $user->get('id');
+		$success = parent::store($updateNulls);
+		if($success){
+			$this->reorder();
+		}
+		
+		return $success;
 	}
 }

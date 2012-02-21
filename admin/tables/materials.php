@@ -12,6 +12,12 @@ class TableMaterials extends JTable
 	var $material_desc		= null;
 	/** @var string Proposal Number */
 	var $material_number	= null;
+	/** @var int Quantity */
+	var $material_qty		= null;
+	/** @var string Unit of Measure */
+	var $material_uom		= null;
+	/** @var float Price */
+	var $material_price		= 0.0;
 	/** @var int */
 	var $ordering			= null;
 	/** @var int */
@@ -53,6 +59,15 @@ class TableMaterials extends JTable
 		if(!$this->ordering){
 			$this->ordering = $this->getNextOrder();
 		}
-		return parent::store($updateNulls);
+		$user = JFactory::getUser();
+		$date = JFactory::getDate();
+		$this->modified = $date->toMySQL(true);
+		$this->modified_by = $user->get('id');
+		$success = parent::store($updateNulls);
+		if($success){
+			$this->reorder();
+		}
+		
+		return $success;
 	}
 }

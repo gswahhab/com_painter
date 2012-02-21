@@ -56,5 +56,14 @@ class TableAddresses extends JTable
 		}
 		return parent::bind($array, $ignore);
 	}
+	
+	function store($updateNulls = false){
+		$user = JFactory::getUser();
+		$date = JFactory::getDate();
+		$this->modified = $date->toMySQL(true);
+		$this->modified_by = $user->get('id');
+		
+		return parent::store($updateNulls);
+	}
 }
 ?>

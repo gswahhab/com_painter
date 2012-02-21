@@ -28,7 +28,7 @@ class TableCountries extends JTable
 	var $user_id				= null;
 	
 	function TableCountries(&$db){
-		parent::__construct('#__painter_country', 'country_id', $db);
+		parent::__construct('#__painter_countries', 'country_id', $db);
 	}
 
 	function bind($array, $ignore=''){
@@ -53,6 +53,15 @@ class TableCountries extends JTable
 		if(!$this->ordering){
 			$this->ordering = $this->getNextOrder();
 		}
-		return parent::store($updateNulls);
+		$user = JFactory::getUser();
+		$date = JFactory::getDate();
+		$this->modified = $date->toMySQL(true);
+		$this->modified_by = $user->get('id');
+		$success = parent::store($updateNulls);
+		if($success){
+			$this->reorder();
+		}
+		
+		return $success;
 	}
 }

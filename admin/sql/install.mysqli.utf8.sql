@@ -39,9 +39,15 @@ CREATE TABLE `#__painter_clients` (
 	`client_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 	`client_name` VARCHAR(128) DEFAULT NULL,
 	`client_number` VARCHAR(16) DEFAULT NULL,
-	`client_contact` VARCHAR(128) DEFAULT NULL,
 	`client_phone` VARCHAR(16) DEFAULT NULL,
 	`client_email` VARCHAR(128) DEFAULT NULL,
+	`client_fax` VARCHAR(128) DEFAULT NULL,
+	`client_contact` VARCHAR(128) DEFAULT NULL,
+	`client_contact_phone` VARCHAR(128) DEFAULT NULL,
+	`client_contact_email` VARCHAR(128) DEFAULT NULL,
+	`client_contact_fax` VARCHAR(128) DEFAULT NULL,
+	`client_lead` VARCHAR(128) DEFAULT NULL,
+	`client_referred` VARCHAR(128) DEFAULT NULL,
 	`ordering` INT(11) UNSIGNED DEFAULT NULL,
 	`published` TINYINT(1) UNSIGNED DEFAULT 0,
 	`checked_out` INT(11) UNSIGNED DEFAULT 0,
@@ -103,6 +109,7 @@ CREATE TABLE `#__painter_items` (
 	`item_qty` INT(8) DEFAULT 0,
 	`item_uom` VARCHAR(16) DEFAULT NULL,
 	`item_rate` DECIMAL(5,4) DEFAULT 0.0000,
+	`item_price` DECIMAL(8,8) DEFAULT 0.0000,
 	`item_type` TINYINT(1) DEFAULT 0,
 	`ordering` INT(11) UNSIGNED DEFAULT NULL,
 	`published` TINYINT(1) UNSIGNED DEFAULT 0,
@@ -110,8 +117,19 @@ CREATE TABLE `#__painter_items` (
 	`checked_out_time` DATETIME DEFAULT '0000-00-00 00:00:00',
 	`modified` DATETIME DEFAULT '0000-00-00 00:00:00',
 	`modified_by` INT(11) UNSIGNED DEFAULT 0,
-	`access` INT(11) UNSIGNED DEFAULT NULL,
-	PRIMARY KEY (`item_id`)
+	`group_id` INT(11) UNSIGNED DEFAULT 0,
+	PRIMARY KEY (`item_id`),
+	KEY `group_id` (`group_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `#__painter_item_groups`;
+CREATE TABLE `#__painter_item_groups` (
+	`group_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`group_name` VARCHAR(128) DEFAULT NULL,
+	`group_description` TEXT DEFAULT NULL,
+	`proposal_id` INT(11) UNSIGNED DEFAULT NULL,
+	PRIMARY KEY (`group_id`),
+	KEY `proposal_id` (`proposal_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `#__painter_materials`;
@@ -120,6 +138,9 @@ CREATE TABLE `#__painter_materials` (
 	`material_name` VARCHAR(128) DEFAULT NULL,
 	`material_desc` TEXT DEFAULT NULL,
 	`material_number` VARCHAR(64) DEFAULT NULL,
+	`material_qty` INT(11) UNSIGNED DEFAULT NULL,
+	`material_uom` VARCHAR(16) DEFAULT NULL,
+	`material_price` DECIMAL(11,8),
 	`ordering` INT(11) UNSIGNED DEFAULT NULL,
 	`published` TINYINT(1) UNSIGNED DEFAULT 0,
 	`checked_out` INT(11) UNSIGNED DEFAULT 0,
@@ -175,6 +196,11 @@ DROP TABLE IF EXISTS `#__painter_services`;
 CREATE TABLE `#__painter_services` (
 	`service_id` INT(11) UNSIGNED NOT NULL	AUTO_INCREMENT,
 	`service_name` VARCHAR(128) DEFAULT NULL,
+	`service_desc` TEXT DEFAULT NULL,
+	`service_number` VARCHAR(64) DEFAULT NULL,
+	`service_qty` INT(11) UNSIGNED DEFAULT NULL,
+	`service_uom` VARCHAR(16) DEFAULT NULL,
+	`service_price` DECIMAL(11,8),
 	`ordering` INT(11) UNSIGNED DEFAULT NULL,
 	`published` TINYINT(1) UNSIGNED DEFAULT 0,
 	`checked_out` INT(11) UNSIGNED DEFAULT 0,

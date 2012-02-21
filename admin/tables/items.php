@@ -18,6 +18,8 @@ class TableItems extends JTable
 	var $item_type			= null;
 	/** @var float Item Rate */
 	var $item_rate			= null;
+	/** @var float Item Price */
+	var $item_price			= null;
 	/** @var int */
 	var $ordering			= null;
 	/** @var int */
@@ -30,14 +32,8 @@ class TableItems extends JTable
 	var $modified			= null;
 	/** @var int */
 	var $modified_by		= null;
-	/** @var int ACL View Level */
-	var $access				= null;
-	/** @var int Key Material ID */
-	var $material_id		= null;
-	/** @var int Key Service ID */
-	var $service_id			= null;
 	/** @var int Key Proposal ID */
-	var $proposal_id		= null;
+	var $group_id			= null;
 	
 	function TableItems(&$db){
 		parent::__construct('#__painter_items', 'item_id', $db);
@@ -65,6 +61,15 @@ class TableItems extends JTable
 		if(!$this->ordering){
 			$this->ordering = $this->getNextOrder();
 		}
-		return parent::store($updateNulls);
+		$user = JFactory::getUser();
+		$date = JFactory::getDate();
+		$this->modified = $date->toMySQL(true);
+		$this->modified_by = $user->get('id');
+		$success = parent::store($updateNulls);
+		if($success && $this->group_id){
+			$this->reorder("`group_id` = {$this->group_id}");
+		}
+		
+		return $success;
 	}
 }
