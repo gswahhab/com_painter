@@ -1,18 +1,13 @@
 <?php
 	defined('_JEXEC') or die('Restricted access');
+	jimport('joomla.html.pane');
+	$pane	=& JPane::getInstance('sliders');
 	JHtml::_('behavior.modal');
 	JHtml::_('behavior.formvalidation');
 ?>
 
 <script type="text/javascript">
 //<![CDATA[
-window.addEvent('domready', function() {
-	$$('button.modal').invoke('addEvent', 'click', function(someEvent){
-		if($(someEvent.target).hasClass('add')){
-			SqueezeBox.open("index.php?option=com_painter&task=items.add&tmpl=component", {handler: 'iframe', size: {x:800, y:400}});
-		}
-	});
-});
 //]]>
 </script>
 
@@ -24,19 +19,6 @@ window.addEvent('domready', function() {
 	<div id="editcell">
 		<div class="width-60 fltlft">
 		<?php foreach($this->form->getFieldsets('base') as $fieldset){ ?>
-			<fieldset class="adminform">
-				<legend><?php echo JText::_($fieldset->label); ?></legend>
-				<dl>
-				<?php foreach($this->form->getFieldset($fieldset->name) as $field){ ?>
-					<dt><?php echo $field->label; ?></dt>
-					<dd><?php echo $field->input; ?></dd>
-				<?php } ?>
-				</dl>
-			</fieldset>
-		<?php } ?>
-		</div>
-		<div class="width-40 fltlft">
-		<?php foreach($this->form->getFieldsets('params') as $fieldset){ ?>
 			<fieldset class="adminform">
 				<legend><?php echo JText::_($fieldset->label); ?></legend>
 				<dl>
@@ -61,15 +43,5 @@ window.addEvent('domready', function() {
 			</fieldset>
 		<?php } ?>
 		</div>
-		<? if($this->form->getValue('proposal_id', 'base')){ ?>
-		<div class="width-100">
-			<fieldset class="adminform">
-				<legend><?php echo JText::_('COM_PAINTER_PROPOSAL_ITEM_GROUPS_LEGEND'); ?></legend>
-				<div class="fltrt">
-					<button type="button" class="modal add"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_ADD_GROUP'); ?></button>
-				</div>
-			</fieldset>
-		</div>
-		<? } ?>
 	</div>
 </form>

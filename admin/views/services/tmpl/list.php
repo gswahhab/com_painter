@@ -15,7 +15,6 @@
 	<input type="hidden" name="view" value="services" />
 	<input type="hidden" name="chosen" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
-	<input type="hidden" name="hidemainmenu" value="1" />
 	<input type="hidden" name="filter_order" value="<? echo $ordering; ?>" />
 	<input type="hidden" name="filter_order_Dir" value="<? echo $order_dir; ?>" />
 	<? echo JHTML::_('form.token')."\n"; ?>

@@ -14,6 +14,16 @@
 			<field name="proposal_misc" type="textarea" class="inputbox" label="COM_PAINTER_PROPOSAL_MISC_LABEL" description="COM_PAINTER_PROPOSAL_MISC_DESC" />
 		</fieldset>
 	</fields>
+	<fields name="params">
+		<fieldset name="params" label="COM_PAINTER_PROPOSAL_PARAMS_LEGEND">
+			<field name="use_deadline" type="radio" default="0" label="COM_PAINTER_USE_DEADLINE_LABEL" description="COM_PAINTER_USE_DEADLINE_DESC">
+				<option value="0">COM_PAINTER_BOOLEAN_FALSE</option>
+				<option value="1">COM_PAINTER_BOOLEAN_TRUE</option>
+			</field>
+			<field name="start_date" type="calendar" label="COM_PAINTER_START_DATE_LABEL" description="COM_PAINTER_START_DATE_DESC" />
+			<field name="end_date" type="calendar" label="COM_PAINTER_END_DATE_LABEL" description="COM_PAINTER_END_DATE_DESC" />
+		</fieldset>
+	</fields>
 	<fields name="options">
 		<fieldset name="options" label="COM_PAINTER_PROPOSAL_OPTIONS_LEGEND">
 			<field name="published" type="radio" default="0" label="COM_PAINTER_PUBLISHED_LABEL" description="COM_PAINTER_PROPOSAL_PUBLISHED_DESC">
