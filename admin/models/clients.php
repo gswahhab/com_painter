@@ -47,8 +47,9 @@ class PainterModelClients extends JModelList
 		$table	= $this->getTable('Clients');
 		
 		// SET THE QUERY
-		$query->select("c.*, v.title AS `access`");
+		$query->select("c.*, cc.customer_name, v.title AS `access`");
 		$query->from($table->getTableName()." AS c");
+		$query->leftJoin("#__painter_customers cc USING(`customer_id`)");
 		$query->leftJoin("#__viewlevels v ON c.access = v.id");
 		
 		// ADD THE ORDERING CLAUSE

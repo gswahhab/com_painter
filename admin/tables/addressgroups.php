@@ -43,23 +43,32 @@ class TableAddressGroups extends JTable
 	
 	function store($updateNulls = false){
 		if(!$this->ordering){
-			$this->ordering = $this->getNextOrder();
+			if($this->customer_id){
+				$this->ordering = $this->getNextOrder("`customer_id` = {$this->customer_id}");
+			}elseif($this->client_id){
+				$this->ordering = $this->getNextOrder("`client_id` = {$this->client_id}");
+			}
 		}
 		$user = JFactory::getUser();
 		$date = JFactory::getDate();
 		$this->modified = $date->toMySQL(true);
 		$this->modified_by = $user->get('id');
 		$success = parent::store($updateNulls);
-		if($success){
-			if($this->customer_id){
-				$this->reorder("`customer_id` = {$this->customer_id}");
-			}elseif($this->client_id){
-				$this->reorder("`client_id` = {$this->client_id}");
-			}
-		}
 		
 		return $success;
 	}
 	
+	function loadAddress($id){
+		$db		= $this->getDbo();
+		$query	= $db->getQuery(true);
+		
+		$query->select("*");
+		$query->from($this->getTableName());
+		$query->where("address_id = ".$id);
+		$db->setQuery($query);
+		$data = $db->loadAssoc();
+
+		return $this->bind($data);
+	}
 }
 ?>

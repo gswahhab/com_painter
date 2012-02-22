@@ -33,18 +33,19 @@ class JFormFieldAddress extends JFormField
 			$table->load($this->value);
 		}else{
 			// IS THIS FOR CUSTOMER OR CLIENT?
+			$foreign_key = $this->element['foreign_key'];
 		}
 
 		$link	= "index.php?option=com_painter&amp;view=addresses&amp;layout=list&amp;tmpl=component";
+		$html[]	= "<div id=\"container_{$this->id}\" class=\"fltlft\">";
+		$html[] = "<p style=\"padding-right: 10px\">{$foreign_key}</p>";
+		$html[]	= "</div>";
 		$html[]	= "<div class=\"fltlft\">";
 		$html[] = "\t<div class=\"button2-left\">";
 		$html[] = "\t\t<div class=\"blank\">";
-		$html[] = "\t\t\t<a href=\"{$link}\" class=\"modal\" id=\"modal_{$this->id}\" rel=\"{handler: 'iframe', size: {x: 700, y: 400}}\" title=\"\">".JText::_('COM_PAINTER_ADDRESS_BUTTON_LABEL')."</a>";
+		$html[] = "\t\t\t<a href=\"{$link}\" class=\"modal\" id=\"modal_{$this->id}\" rel=\"{handler: 'iframe', size: {x: 800, y: 400}}\" title=\"\">".JText::_('COM_PAINTER_ADDRESS_BUTTON_LABEL')."</a>";
 		$html[] = "\t\t</div>";
 		$html[] = "\t</div>";
-		$html[]	= "</div>";
-		$html[]	= "<div class=\"fltlft\">";
-		$html[] = "<p>{$this->value}</p>";
 		$html[]	= "</div>";
 		// CREATE THE HTML ELEMENT STRING
 		
@@ -53,8 +54,15 @@ class JFormFieldAddress extends JFormField
 		
 		// CREATE THE JAVASCRIPT INTERFACE
 		$script[] = "window.addEvent('domready', function(){";
-		$script[] = "\tif($('jform_base_client_id').value){";
-		$script[] = "\t\t$('modal_{$this->id}').href += '&amp;client_id=' + $('jform_base_client_id').value;";
+		$script[] = "\tif($('jform_base_client_id')){";
+		$script[] = "\t\tif($('jform_base_client_id').value){";
+		$script[] = "\t\t\t$('modal_{$this->id}').href += '&client_id=' + $('jform_base_client_id').value;";
+		$script[] = "\t\t}";
+		$script[] = "\t}";
+		$script[] = "\tif($('jform_base_customer_id')){";
+		$script[] = "\t\tif($('jform_base_customer_id').value){";
+		$script[] = "\t\t\t$('modal_{$this->id}').href += '&customer_id=' + $('jform_base_customer_id').value;";
+		$script[] = "\t\t}";
 		$script[] = "\t}";
 		$script[] = "});";
 		

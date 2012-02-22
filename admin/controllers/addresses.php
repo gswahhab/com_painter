@@ -22,6 +22,14 @@ class PainterControllerAddresses extends JControllerAdmin
 		parent::__construct();
 		$this->view_item = "addresses&tmpl=component";
 		$this->view_list = "addresses&tmpl=component";
+		if($client_id = JRequest::getInt('client_id', 0)){
+			$this->view_item = "addresses&tmpl=component&client_id={$client_id}";
+			$this->view_list = "addresses&tmpl=component&client_id={$client_id}";
+		}
+		if($customer_id = JRequest::getInt('customer_id', 0)){
+			$this->view_item = "addresses&tmpl=component&customer_id={$customer_id}";
+			$this->view_list = "addresses&tmpl=component&customer_id={$customer_id}";
+		}
 	}
 	/**
 	 * Method to display the view

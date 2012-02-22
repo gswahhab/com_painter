@@ -38,9 +38,11 @@ class PainterViewAddresses extends JView
 			break;
 		case "list":
 			// GET DATA FROM THE MODEL
-			$this->filter	= $this->get('State');
-			$this->items	= $this->get('Items');
-			$this->page		= $this->get('Pagination');
+			$this->filter		= $this->get('State');
+			$this->items		= $this->get('Items');
+			$this->page			= $this->get('Pagination');
+			$this->customer_id	= JRequest::getInt('customer_id', 0);
+			$this->client_id	= JRequest::getInt('client_id', 0, 'get');
 			break;
 		default:
 			break;

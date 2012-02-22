@@ -23,6 +23,14 @@ class PainterControllerAddress extends JControllerForm
 		parent::__construct();
 		$this->view_item = "addresses";
 		$this->view_list = "addresses";
+		if($client_id = JRequest::getInt('client_id', 0)){
+			$this->view_item = "addresses&client_id={$client_id}";
+			$this->view_list = "addresses&client_id={$client_id}";
+		}
+		if($customer_id = JRequest::getInt('customer_id', 0)){
+			$this->view_item = "addresses&customer_id={$customer_id}";
+			$this->view_list = "addresses&customer_id={$customer_id}";
+		}
 	}
 	
 	/**

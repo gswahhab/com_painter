@@ -41,6 +41,7 @@ class PainterController extends JController
 		$viewName = JRequest::getCmd('view', $this->default_view);
 		// SWITCH CASE FOR IRREGULAR ENGLISH PLURALS
 		switch($viewLayout){
+		case "address":
 		case "edit":
 			switch($viewName){
 			case "countries":
@@ -48,6 +49,7 @@ class PainterController extends JController
 				break;
 			case "addresses":
 				$modelName = "address";
+				break;
 			default:
 				// DEFAULT PLURAL TO SINGULAR
 				$modelName = substr($viewName, 0, strlen($viewName) - 1);

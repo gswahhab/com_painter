@@ -88,8 +88,13 @@ class PainterModelRegion extends JModelAdmin
 
 		return $data;
 	}
-	
-	public function getReorderConditions($table)
+	/**
+	 * A protected method to get a set of ordering conditions.
+	 *
+	 * @param   object  $table  A JTable object.
+	 * @return  array  An array of conditions to add to ordering queries.
+	 */
+	protected function getReorderConditions($table)
 	{
 		$result = array();
 		if($table->country_id){

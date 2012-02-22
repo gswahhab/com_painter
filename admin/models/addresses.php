@@ -50,16 +50,18 @@ class PainterModelAddresses extends JModelList
 		
 		
 		// SET THE QUERY
-		$query->select("a.*, CONCAT_WS(' ', `address_line1`, `address_line2`) AS `address_name`, v.title AS `access`");
+		$query->select("a.*, g.ordering, region_code, CONCAT_WS(' ', `address_line1`, `address_line2`) AS `address_name`, v.title AS `access`");
 		$query->from("`#__painter_address_groups` g");
 		//$query->from($table->getTableName()." AS a");
 		$query->leftJoin("`#__painter_addresses` a USING(`address_id`)");
+		$query->leftJoin("`#__painter_regions` r USING(`region_id`)");
 		$query->leftJoin("`#__viewlevels` v ON a.`access` = v.`id`");
 		if($client){
 			$query->where("g.`client_id` = {$client}");
-		}
-		if($customer){
-			$query->where("g.`customer_id` = {$customer}");
+		}else{
+			if($customer){
+				$query->where("g.`customer_id` = {$customer}");
+			}
 		}
 		
 		// ADD THE ORDERING CLAUSE

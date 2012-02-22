@@ -7,14 +7,42 @@
 
 <script type="text/javascript">
 //<![CDATA[
+window.addEvent('domready', function() {
+	$$('button.modal').invoke('addEvent', 'click', function(someEvent){
+		if($(someEvent.target).hasClass('apply')){
+			someTask = 'address.apply';
+		}
+		if($(someEvent.target).hasClass('save')){
+			someTask = 'address.save';
+		}
+		if($(someEvent.target).hasClass('save2new')){
+			someTask = 'address.save2new';
+		}
+		if($(someEvent.target).hasClass('cancel')){
+			someTask = 'address.cancel';
+		}
+		Joomla.submitform(someTask, document.adminForm);
+	});
+});
 //]]>
 </script>
 
 <form action="index.php" method="post" name="adminForm" class="form-validate" enctype="multipart/form-data">
 	<input type="hidden" name="option" value="com_painter" />
+	<input type="hidden" name="tmpl" value="component" />
+	<input type="hidden" name="client_id" value="<? echo $this->form->getValue('client_id', 'base'); ?>" />
+	<input type="hidden" name="customer_id" value="<? echo $this->form->getValue('customer_id', 'base'); ?>" />
 	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="hidemainmenu" value="0" />
 	<? echo JHTML::_('form.token')."\n"; ?>
+	<fieldset class="filter">
+		<div class="right">
+			<button type="button" class="modal apply"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_APPLY'); ?></button>
+			<button type="button" class="modal save"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_SAVE'); ?></button>
+			<button type="button" class="modal save2new"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_SAVE2NEW'); ?></button>
+			<button type="button" class="modal cancel"><? echo JText::_('COM_PAINTER_MODAL_BUTTON_CANCEL'); ?></button>
+		</div>
+	</fieldset>
 	<div id="editcell">
 		<div class="width-60 fltlft">
 		<?php foreach($this->form->getFieldsets('base') as $fieldset){ ?>

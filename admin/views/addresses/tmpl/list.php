@@ -34,6 +34,9 @@ window.addEvent('domready', function() {
 <form action="index.php" method="post" name="adminForm">
 	<input type="hidden" name="option" value="com_painter" />
 	<input type="hidden" name="view" value="addresses" />
+	<input type="hidden" name="tmpl" value="component" />
+	<input type="hidden" name="customer_id" value="<? echo $this->customer_id; ?>" />
+	<input type="hidden" name="client_id" value="<? echo $this->client_id; ?>" />
 	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="chosen" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
@@ -113,7 +116,7 @@ window.addEvent('domready', function() {
 					<? echo $row->address_city; ?>
 				</td>
 				<td>
-					<? echo $row->region_name; ?>
+					<? echo $row->region_code; ?>
 				</td>
 				<td>
 					<? echo $row->address_postal_code; ?>

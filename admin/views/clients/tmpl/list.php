@@ -31,6 +31,9 @@
 				<th class="title">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_CLIENT_NAME_LABEL'), 'client_name', $order_dir, $ordering, 'filter'); ?>
 				</th>
+				<th class="title">
+					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_CUSTOMER_NAME_LABEL'), 'customer_name', $order_dir, $ordering, 'filter'); ?>
+				</th>
 				<th width="10%" nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_PUBLISHED_LABEL'), 'c.published', $order_dir, $ordering, 'filter'); ?>
 				</th>
@@ -40,9 +43,6 @@
 				</th>
 				<th nowrap="nowrap">
 					<? echo JHTML::_('grid.sort', JText::_('COM_PAINTER_LIST_ACCESS_LABEL'), 'c.access', $order_dir, $ordering, 'filter'); ?>
-				</th>
-				<th>
-					<? echo JText::_('COM_PAINTER_LIST_CLIENT_DESCRIPTION_LABEL'); ?>
 				</th>
 				<th width="1%">
 					<? echo JText::_('COM_PAINTER_LIST_CLIENT_ID_LABEL'); ?>
@@ -74,6 +74,9 @@
 					}
 					?>
 				</td>
+				<td>
+					<? echo $row->customer_name; ?>
+				</td>
 				<td align="center">
 					<?php echo JHtml::_('jgrid.published', $row->published, $i, 'clients.', true, 'cb'); ?>
 				</td>
@@ -86,9 +89,6 @@
 					<? echo $row->access; ?>
 				</td>
 				<td>
-					<? echo $row->client_description; ?>
-				</td>
-				<td>
 					<? echo $row->client_id; ?>
 				</td>
 			</tr>
@@ -99,7 +99,7 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="10">
+				<td colspan="8">
 					<? echo $this->page->getListFooter(); ?>
 				</td>
 			</tr>

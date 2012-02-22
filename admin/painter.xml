@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6" method="new">
+	<name>Painter</name>
+	<creationDate>2012-02-07</creationDate>
+	<author>Alonzo C. Turner</author>
+	<authorUrl>http://www.subtextproductions.com</authorUrl>
+	<authorEmail>alonzo.turner@subtextproductions.com</authorEmail>
+	<copyright>COM_PAINTER_COMPONENT_COPYRIGHT</copyright>
+	<license>COM_PAINTER_COMPONENT_LICENSE</license>
+	<version>0.0.1a</version>
+	<description>COM_PAINTER_COMPONENT_DESCRIPTION</description>
+	<scriptfile>install.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysqli" charset="utf8">sql/install.mysqli.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysqli" charset="utf8">sql/install.mysqli.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysqli">sql/updates/mysqli</schemapath>
+		</schemas>
+	</update>
+	<files folder="site">
+		<filename>index.html</filename>
+		<folder>language</folder>
+		<filename>painter.php</filename>
+	</files>
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB/en-GB.com_painter.ini</language>
+		<language tag="en-US">language/en-US/en-US.com_painter.ini</language>
+	</languages>
+	<administration>
+		<menu>COM_PAINTER_MENU_ROOT_NAME</menu>
+		<submenu>
+			<menu controller="customers" view="customers">COM_PAINTER_SUBMENU_CUSTOMERS</menu>
+			<menu controller="clients" view="clients">COM_PAINTER_SUBMENU_CLIENTS</menu>
+			<menu controller="proposals" view="proposals">COM_PAINTER_SUBMENU_PROPOSALS</menu>
+			<menu controller="materials" view="materials">COM_PAINTER_SUBMENU_MATERIALS</menu>
+			<menu controller="services" view="services">COM_PAINTER_SUBMENU_SERVICES</menu>
+		</submenu>
+		<languages folder="admin">
+			<language tag="en-US">language/en-US/en-US.com_painter.ini</language>
+			<language tag="en-US">language/en-US/en-US.com_painter.sys.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_painter.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_painter.sys.ini</language>
+		</languages>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<filename>index.html</filename>
+			<folder>language</folder>
+			<folder>models</folder>
+			<filename>painter.php</filename>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+	</administration>
+</extension>
