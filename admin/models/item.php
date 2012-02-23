@@ -39,6 +39,19 @@ class PainterModelItem extends JModelAdmin
 		return null;
 	}
 	/**
+	 * Convenience method to get an instance of the group Form.
+	 *
+	 * @return  JForm   A JForm object to retrieve the data set.
+	 */
+	public function getGroupForm($data = array(), $loadData = true)
+	{
+		if($form = $this->loadForm('com_painter.itemgroup', 'itemgroup', array('control'=>'jform', 'load_data'=>$loadData))){
+			return $form;
+		}
+		JError::raiseError(0, JText::sprintf('JLIB_FORM_INVALID_FORM_OBJECT', 'item'));
+		return null;
+	}
+	/**
 	 * Method to get the data that should be injected in the form.
 	 *
 	 * @return	mixed	The data for the form.
@@ -80,9 +93,8 @@ class PainterModelItem extends JModelAdmin
 				return false;
 			}
 			// Prime some default values.
-			if ($this->getState('item.id') == 0) {
-				//$app = JFactory::getApplication();
-				//$data->set('catid', JRequest::getInt('catid', $app->getUserState('com_weblinks.weblinks.filter.category_id')));
+			if ($proposal = JRequest::getInt('proposal_id')) {
+				$data['base']['proposal_id'] = $proposal;
 			}
 		}
 

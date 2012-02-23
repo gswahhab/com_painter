@@ -32,11 +32,10 @@ class PainterViewItems extends JView
 		$layout = JRequest::getCmd('layout', 'list');
 		$this->setLayout($layout);
 		switch($layout){
+		case "editgroup":
+			$this->form = $this->get('GroupForm');
+			break;
 		case "edit":
-			JToolBarHelper::title(JText::_('COM_PAINTER_EDIT_ITEM_SETTINGS'), 'generic.png');
-			JToolBarHelper::save('item.save');
-			JToolBarHelper::apply('item.apply');
-			JToolBarHelper::cancel('item.cancel');
 			$this->form = $this->get('Form');
 			break;
 		case "list":

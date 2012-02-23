@@ -41,6 +41,7 @@ class PainterController extends JController
 		$viewName = JRequest::getCmd('view', $this->default_view);
 		// SWITCH CASE FOR IRREGULAR ENGLISH PLURALS
 		switch($viewLayout){
+		case "editgroup":
 		case "address":
 		case "edit":
 			switch($viewName){

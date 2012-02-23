@@ -9,7 +9,7 @@
 window.addEvent('domready', function() {
 	$$('button.modal').invoke('addEvent', 'click', function(someEvent){
 		if($(someEvent.target).hasClass('add')){
-			SqueezeBox.open("index.php?option=com_painter&task=items.add&tmpl=component", {handler: 'iframe', size: {x:800, y:400}});
+			SqueezeBox.open("index.php?option=com_painter&task=item.addgroup&layout=editgroup&tmpl=component&proposal_id={$this-form->getValue('proposal_id', 'base')}", {handler: 'iframe', size: {x:600, y:300}});
 		}
 	});
 });
@@ -62,7 +62,7 @@ window.addEvent('domready', function() {
 		<?php } ?>
 		</div>
 		<? if($this->form->getValue('proposal_id', 'base')){ ?>
-		<div class="width-100">
+		<div class="width-100 fltlft">
 			<fieldset class="adminform">
 				<legend><?php echo JText::_('COM_PAINTER_PROPOSAL_ITEM_GROUPS_LEGEND'); ?></legend>
 				<div class="fltrt">
